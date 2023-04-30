@@ -15,8 +15,8 @@ public class MarketAppAPS {
         
         // Creates principal window
         MainFrame mfrm = new MainFrame();
-        
-        mfrm.setSize(400, 300);
+        mfrm.setResizable(false);
+        mfrm.setSize(500, 300);
         mfrm.setVisible(true);
         
         mfrm.switchPanel("login panel"); // show panel 1 by defaul
