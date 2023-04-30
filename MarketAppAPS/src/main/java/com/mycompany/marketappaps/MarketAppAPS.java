@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.marketappaps;
+
 /**
  *
  * @author luis
@@ -10,16 +10,18 @@ package com.mycompany.marketappaps;
 public class MarketAppAPS {
 
     public static void main(String[] args) {
-        
+
         System.out.println("Hello World!");
-        
-        // Creates principal window
+
+        // Define principal window
         MainFrame mfrm = new MainFrame();
-        mfrm.setResizable(false);
-        mfrm.setSize(500, 300);
-        mfrm.setVisible(true);
         
-        mfrm.switchPanel("login panel"); // show panel 1 by defaul
-        
+        //Create and display the GUI
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                mfrm.setVisible(true);
+            }
+        });
+
     }
 }

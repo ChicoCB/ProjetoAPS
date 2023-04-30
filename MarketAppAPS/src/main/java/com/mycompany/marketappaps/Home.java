@@ -10,11 +10,9 @@ package com.mycompany.marketappaps;
  */
 public class Home extends javax.swing.JPanel {
 
-    private MainFrame mainframe;
+    private final MainFrame mainframe;
   
-    /**
-     * Creates new form Home
-     */
+   
     public Home(MainFrame mainframe) {
         
           initComponents();

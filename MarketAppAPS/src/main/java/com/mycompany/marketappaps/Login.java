@@ -10,9 +10,10 @@ package com.mycompany.marketappaps;
  */
 public class Login extends javax.swing.JPanel {
 
- private MainFrame mainframe;
+ private final MainFrame mainframe;
     /**
-     * Creates new form Login
+     * @param mainframe 
+     * The principal "window" where the GUI application it's based
      */
     public Login(MainFrame mainframe) {
         initComponents();
