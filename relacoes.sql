@@ -1,0 +1,27 @@
+insert into users values ('001','Francisco','1234',true);
+insert into produtos values('00000','peca1','500','3');
+insert into produtos values('11111','peca2','1000','1');
+insert into produtos values('22222','peca3','200','1');
+insert into produtos values('33333','peca4','100','6');
+insert into produtos values('44444','peca5','600','7');
+insert into produtos values('55555','peca6','800','8');
+insert into produtos values('66666','peca7','900','12');
+insert into produtos values('77777','peca8','510','2');
+insert into produtos values('88888','peca9','570','1');
+insert into produtos values('99999','peca10','910','1');
+insert into clientes values('11112','Barbara','Rodrigue');
+insert into clientes values('11113','Rodrigo','Maia');
+insert into clientes values('11114','Guilherme','Alves');
+insert into clientes values('11115','Juliano','Ferreira');
+insert into clientes values('11116','Pedro','Paiva');
+insert into enderecos values('00001','11112','Paulista','Alfonso','71');
+insert into enderecos values('00002','11113','Paulista','Maio','911');
+insert into enderecos values('00003','11114','Centro','Avenida Brasil','128');
+insert into enderecos values('00004','11115','Vila Olímpia','Treze de Maio','551');
+insert into enderecos values('00005','11116','Rudge Ramos','Rua das Flores','741');
+insert into vendas values('00001','66666','3','11112','2021-09-12','Em processamento');
+insert into vendas values('00002','55555','3','11113','2021-09-13','Em processamento');
+insert into vendas values('00003','44444','3','11114','2021-09-14','A caminho');
+insert into vendas values('00004','33333','3','11115','2021-09-15','Entregue');
+insert into vendas values('00005','22222','1','11116','2021-09-16','Cancelada');
+
