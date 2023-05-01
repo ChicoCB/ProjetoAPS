@@ -5,6 +5,7 @@
 package com.mycompany.marketappaps;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
+import java.sql.*;
 
 /**
  *
@@ -18,12 +19,16 @@ public class MainFrame extends javax.swing.JFrame {
     
     public Login login;
     public Home home;
+    public Connection con;
     
     private CardLayout cardLayout;
     
             
-    public MainFrame() {
-        
+    public MainFrame(Connection con) {
+        if (con != null)
+            this.con = con;
+        else
+            return;
         initComponents();
        
         login = new Login(this);
