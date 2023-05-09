@@ -14,7 +14,6 @@ public class MarketAppAPS {
     public static void main(String[] args) {
 
         Connection con;
-        ResultSet rs;
 
         String url = "jdbc:mysql://localhost/projetoaps";
         String user = "root";

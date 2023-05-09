@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.marketappaps;
+
 import java.sql.*;
 
 /**
@@ -11,15 +12,23 @@ import java.sql.*;
  */
 public class Login extends javax.swing.JPanel {
 
- private final MainFrame mainframe;
+    private final MainFrame mainframe;
+    private ResultSet user_password_set;
+
     /**
-     * @param mainframe 
-     * The principal "window" where the GUI application it's based
+     * @param mainframe The principal "window" where the GUI application it's
+     * based
      */
     public Login(MainFrame mainframe) {
+
         initComponents();
-        
-        this.mainframe = mainframe; 
+
+        this.mainframe = mainframe;
+        this.mainframe.setSize(450, 200);
+        this.mainframe.setLocation(700, 400);
+
+        user_password_set = null;
+
     }
 
     /**
@@ -99,13 +108,52 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean fetch_user_credentials() {
+
+        try {
+            PreparedStatement ptmt = mainframe.con.prepareStatement("select * from users");
+
+            user_password_set = ptmt.executeQuery();
+
+            String nome_inserido = jTextField1.getText();
+            String senha_inserida = jPasswordField1.getText();
+
+            while (user_password_set.next()) {
+
+                String nome = user_password_set.getString("nome");
+                String senha = user_password_set.getString("senha");
+
+                if (nome.equals(nome_inserido)) {
+                    if (senha.equals(senha_inserida)) {
+                        return true; // Found correct credentials
+                    }
+                }
+
+            }
+
+        } catch (SQLException err) {
+            err.printStackTrace();
+        }
+
+        return false;  //Didn't found user with match credentials 
+
+    }
+
+    /*
+      *  Button that make transition between login and home window
+      *  if the password matches .
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        mainframe.switchPanel("home panel");
-        mainframe.setSize(1024 , 768);
+
+        if (fetch_user_credentials()) {
+            mainframe.switchPanel("home panel");
+            mainframe.setSize(1024, 768);
+             mainframe.setLocation(400, 150);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

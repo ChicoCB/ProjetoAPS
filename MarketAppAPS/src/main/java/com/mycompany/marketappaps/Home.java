@@ -8,7 +8,6 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 
 /**
- *
  * @author luis
  */
 public class Home extends javax.swing.JPanel {

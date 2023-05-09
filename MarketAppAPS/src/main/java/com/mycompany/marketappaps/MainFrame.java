@@ -20,15 +20,19 @@ public class MainFrame extends javax.swing.JFrame {
     public Login login;
     public Home home;
     public Connection con;
-    
     private CardLayout cardLayout;
     
             
     public MainFrame(Connection con) {
+        
+        this.setResizable(false);
+       
+        
         if (con != null)
             this.con = con;
         else
             return;
+        
         initComponents();
        
         login = new Login(this);
