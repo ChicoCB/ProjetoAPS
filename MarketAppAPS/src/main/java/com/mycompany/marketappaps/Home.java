@@ -3,9 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.marketappaps;
+import java.awt.Image;
 import java.sql.*;
 import java.util.*;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import java.sql.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
+import java.io.*;
+import java.awt.Image;
 
 /**
  *
@@ -207,11 +216,11 @@ public class Home extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,8 +235,8 @@ public class Home extends javax.swing.JPanel {
                                     .addComponent(jTextField15)))
                             .addComponent(jLabel21))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -952,6 +961,28 @@ public class Home extends javax.swing.JPanel {
           }
     }
     
+    private void updateProdutos() {
+        try {
+            jTextField15.setText(rs1.getString(1));
+            jTextField16.setText(rs1.getString(2));
+            jTextField17.setText(rs1.getString(3));
+            jTextField18.setText(rs1.getString(4));
+            Image im = ImageIO.read(rs1.getBinaryStream("imagem"));
+            // Redimensiona a imagem para caber no JLabel
+            int larguraJLabel = jLabel1.getWidth();
+            int alturaJLabel = jLabel1.getHeight();
+            Image imagemRedimensionada = im.getScaledInstance(larguraJLabel, alturaJLabel, im.SCALE_SMOOTH);
+
+            jLabel1.setIcon(new ImageIcon(imagemRedimensionada));
+        } catch (SQLException sqle1)
+        {
+            sqle1.printStackTrace();
+        } catch(IOException ioe1)
+        {
+             ioe1.printStackTrace();;
+        }
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -1007,39 +1038,31 @@ public class Home extends javax.swing.JPanel {
         try {
             if (rs1.absolute(selectedIndex))
             {
-                jTextField15.setText(rs1.getString(1));
-                jTextField16.setText(rs1.getString(2));
-                jTextField17.setText(rs1.getString(3));
-                jTextField18.setText(rs1.getString(4));
+                updateProdutos(); 
             }
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
-        }  
+        } 
+        
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             rs1.first();
-            jTextField15.setText(rs1.getString(1));
-            jTextField16.setText(rs1.getString(2));
-            jTextField17.setText(rs1.getString(3));
-            jTextField18.setText(rs1.getString(4));
             jList1.setSelectedIndex(0);
+             updateProdutos(); 
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
-        }   
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        try {
             if (rs1.next()) {
-                jTextField15.setText(rs1.getString(1));
-                jTextField16.setText(rs1.getString(2));
-                jTextField17.setText(rs1.getString(3));
-                jTextField18.setText(rs1.getString(4));
                 jList1.setSelectedIndex(jList1.getSelectedIndex()+1);
+                updateProdutos(); 
             }
             else 
             {
@@ -1048,18 +1071,15 @@ public class Home extends javax.swing.JPanel {
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
-        }   
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             if (rs1.previous())
             {
-                jTextField15.setText(rs1.getString(1));
-                jTextField16.setText(rs1.getString(2));
-                jTextField17.setText(rs1.getString(3));
-                jTextField18.setText(rs1.getString(4));
                 jList1.setSelectedIndex(jList1.getSelectedIndex()-1);
+                updateProdutos(); 
             }
             else {
                 rs1.next();
@@ -1067,21 +1087,18 @@ public class Home extends javax.swing.JPanel {
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
-        } 
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             rs1.last();
-            jTextField15.setText(rs1.getString(1));
-            jTextField16.setText(rs1.getString(2));
-            jTextField17.setText(rs1.getString(3));
-            jTextField18.setText(rs1.getString(4));
             jList1.setSelectedIndex(jList1.getModel().getSize()-1);
+            updateProdutos(); 
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
-        } 
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList2ValueChanged

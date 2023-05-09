@@ -12,13 +12,12 @@ import java.sql.*;
 public class MarketAppAPS {
 
     public static void main(String[] args) {
-
         Connection con;
         ResultSet rs;
         
         String url = "jdbc:mysql://localhost/projetoaps";
         String user = "root";
-        String password = "1234";
+        String password = "fran3828";
         try {
           con = DriverManager.getConnection(url, user, password);
         } catch (SQLException sqle1) {
