@@ -12,7 +12,6 @@ import java.sql.*;
 public class MarketAppAPS {
 
     public static void main(String[] args) {
-
         Connection con;
 
         String url = "jdbc:mysql://localhost/projetoaps";
