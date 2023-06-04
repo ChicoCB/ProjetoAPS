@@ -41,12 +41,15 @@ create table enderecos (
 create table vendas (
 	venda_ID varchar(8),
     prod_ID varchar(8),
+    endereco_ID varchar(20),
 	quantidade varchar(10),
     client_ID varchar(8),
     data DATE,
     status varchar(20),
     data_entrega DATE null,
+    
     primary key(venda_ID),
     foreign key (prod_ID) references produtos(prod_ID),
-    foreign key (client_ID) references clientes(client_ID)
+    foreign key (client_ID) references clientes(client_ID),
+    foreign key (endereco_ID) references enderecos(endereco_ID)
 );

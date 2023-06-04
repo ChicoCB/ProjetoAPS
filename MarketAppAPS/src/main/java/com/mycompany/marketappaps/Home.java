@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import java.io.*;
 import java.awt.Image;
+import java.util.Date;
 
 /**
  * @author luis
@@ -22,16 +23,16 @@ import java.awt.Image;
 public class Home extends javax.swing.JPanel {
 
     private final MainFrame mainframe;
-    private ResultSet rs1;
-    private ResultSet rs2;
+    private ResultSet ProductsResultSet;
+    private ResultSet SalesResultSet;
    
     public Home(MainFrame mainframe) {
         
           initComponents();
          
           this.mainframe = mainframe;
-          rs1 = null;
-          rs2 = null;
+          ProductsResultSet = null;
+          SalesResultSet = null;
           
           updateProductsLists();
           updateSalesList();
@@ -112,8 +113,6 @@ public class Home extends javax.swing.JPanel {
         jTextField22 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jTextField23 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -386,9 +385,7 @@ public class Home extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(jButton6))))
+                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                     .addComponent(jTextField3)
                     .addComponent(jTextField4)
@@ -602,19 +599,14 @@ public class Home extends javax.swing.JPanel {
         jLabel23.setText("ID do produto:");
         jLabel23.setFocusable(false);
 
-        jLabel24.setText("Quantidade:");
+        jLabel24.setText("ID do endereço:");
         jLabel24.setFocusable(false);
 
-        jLabel25.setText("Nome do cliente:");
+        jLabel25.setText("Quantidade:");
         jLabel25.setFocusable(false);
 
-        jLabel26.setText("Endereço:");
+        jLabel26.setText("ID do cliente:");
         jLabel26.setFocusable(false);
-
-        jLabel27.setText("Data da compra:");
-        jLabel27.setFocusable(false);
-
-        jTextField24.setFocusable(false);
 
         jButton7.setText("Registrar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -654,30 +646,22 @@ public class Home extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(219, Short.MAX_VALUE)
+                        .addContainerGap(227, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel26))
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addGap(20, 20, 20)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField19)
-                                    .addComponent(jTextField20)
-                                    .addComponent(jTextField21)
-                                    .addComponent(jTextField22)
-                                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(97, 97, 97)
-                                .addComponent(jButton7))))
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel26))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField19)
+                            .addComponent(jTextField20)
+                            .addComponent(jTextField21)
+                            .addComponent(jTextField22)
+                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97)
+                        .addComponent(jButton7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(467, 467, 467)
                         .addComponent(jLabel28))
@@ -697,7 +681,7 @@ public class Home extends javax.swing.JPanel {
                                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(40, 40, 40)
                                 .addComponent(jButton8)))))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,11 +709,7 @@ public class Home extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(65, 65, 65)
                 .addComponent(jLabel29)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -956,14 +936,38 @@ public class Home extends javax.swing.JPanel {
         jTabbedPane1.getAccessibleContext().setAccessibleName("tab3");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateProductsLists() {
+    
+    private void updateProductsResultSet() {
         try {
-              PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
               
-              rs1 = pstmt.executeQuery();
+            ProductsResultSet = pstmt.executeQuery();
+            
+        } catch (SQLException sqle1)
+        {
+            sqle1.printStackTrace();
+        }
+    }
+    
+    private void updateSalesResultSet() {
+        try {
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            SalesResultSet = pstmt2.executeQuery();
+            
+        } catch (SQLException sqle1)
+        {
+            sqle1.printStackTrace();
+        }
+    }
+    
+    private void updateProductsLists() {
+        
+        updateProductsResultSet();
+        
+        try {
               List<String> lista = new ArrayList<String>();
-              while (rs1.next()) {
-                  String nome = rs1.getString("nome");
+              while (ProductsResultSet.next()) {
+                  String nome = ProductsResultSet.getString("nome");
                   lista.add(nome);
               }
               DefaultListModel<String> modelo = new DefaultListModel<String>();
@@ -983,12 +987,13 @@ public class Home extends javax.swing.JPanel {
     }
     
     private void updateSalesList() {
+        
+        updateSalesResultSet();
+        
         try { 
-              PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-              rs2 = pstmt2.executeQuery();
               List<String> lista2 = new ArrayList<String>();
-              while (rs2.next()) {
-                  String venda_ID = rs2.getString("venda_ID");
+              while (SalesResultSet.next()) {
+                  String venda_ID = SalesResultSet.getString("venda_ID");
                   lista2.add(venda_ID);
               }
               DefaultListModel<String> modelo2 = new DefaultListModel<String>();
@@ -1004,19 +1009,25 @@ public class Home extends javax.swing.JPanel {
           }
     }
     
-    private void updateProdutos() {
+    private void updateProductsFields() {
         try {
-            jTextField15.setText(rs1.getString(1));
-            jTextField16.setText(rs1.getString(2));
-            jTextField17.setText(rs1.getString(3));
-            jTextField18.setText(rs1.getString(4));
-            Image im = ImageIO.read(rs1.getBinaryStream("imagem"));
-            // Redimensiona a imagem para caber no JLabel
-            int larguraJLabel = jLabel1.getWidth();
-            int alturaJLabel = jLabel1.getHeight();
-            Image imagemRedimensionada = im.getScaledInstance(larguraJLabel, alturaJLabel, im.SCALE_SMOOTH);
+            jTextField15.setText(ProductsResultSet.getString(1));
+            jTextField16.setText(ProductsResultSet.getString(2));
+            jTextField17.setText(ProductsResultSet.getString(3));
+            jTextField18.setText(ProductsResultSet.getString(4));
+            
+            /* Updates product image, if there is one */
+            if (ProductsResultSet.getBinaryStream("imagem") != null)
+            {
+                Image im = ImageIO.read(ProductsResultSet.getBinaryStream("imagem"));
+                // Redimensiona a imagem para caber no JLabel
+                int larguraJLabel = jLabel1.getWidth();
+                int alturaJLabel = jLabel1.getHeight();
+                Image imagemRedimensionada = im.getScaledInstance(larguraJLabel, alturaJLabel, im.SCALE_SMOOTH);
 
-            jLabel1.setIcon(new ImageIcon(imagemRedimensionada));
+                jLabel1.setIcon(new ImageIcon(imagemRedimensionada));
+            }
+            
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
@@ -1024,6 +1035,28 @@ public class Home extends javax.swing.JPanel {
         {
              ioe1.printStackTrace();;
         }
+    }
+    
+    private void updateSalesFields() {
+        try {
+            jTextField7.setText(SalesResultSet.getString("venda_ID"));
+            jTextField8.setText(SalesResultSet.getString("prod_ID"));
+            jTextField9.setText(SalesResultSet.getString("quantidade"));
+            jTextField10.setText(SalesResultSet.getString("clientes.nome") + " " + SalesResultSet.getString("clientes.sobrenome"));
+            jTextField11.setText("Rua " + SalesResultSet.getString("rua") + ", " + SalesResultSet.getString("numero") + " - " + SalesResultSet.getString("bairro"));
+            jTextField12.setText(SalesResultSet.getString("data"));
+            jTextField13.setText(SalesResultSet.getString("status"));
+            String dataEntrega = SalesResultSet.getString("data_entrega");
+            if (dataEntrega == null)
+                jTextField14.setText("Não entregue");
+            else
+                jTextField14.setText(dataEntrega);
+            
+        } catch (SQLException sqle1)
+        {
+            sqle1.printStackTrace();
+        }
+        
     }
     
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -1050,12 +1083,105 @@ public class Home extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField19ActionPerformed
 
+    /* Registers new sale */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+            String query = "insert into vendas values (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = mainframe.con.prepareStatement(query);
+            pstmt.setString(1,jTextField19.getText());
+            pstmt.setString(2,jTextField20.getText());
+            pstmt.setString(3,jTextField21.getText());
+            pstmt.setString(4,jTextField22.getText());
+            pstmt.setString(5,jTextField23.getText());
+ 
+            Date currentDate = new Date();
+            java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
+            pstmt.setDate(6,sqlDate);
+            
+            pstmt.setString(7,"Em processamento");
+            pstmt.setString(8,null);
+            
+            
+            /* Updates products */   
+            String quantitySold = jTextField22.getText();
+            String prodID = jTextField20.getText();
+            
+             
+            String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?" ;
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
+            pstmt2.setString(1,quantitySold);
+            pstmt2.setString(2, prodID);
+            pstmt2.executeUpdate();
+            
+            PreparedStatement pstmt3 = mainframe.con.prepareStatement("select quantidade from produtos where prod_ID = ?");
+            pstmt3.setString(1,prodID);
+            ResultSet rs = pstmt3.executeQuery();
+            if (rs.next())
+            {
+                /* Removes from database if there are no products remaining */
+                if (rs.getInt("quantidade") <= 0)
+                {
+                    String query3 = "delete from produtos where prod_ID = ?";
+                    PreparedStatement pstmt4 = mainframe.con.prepareStatement(query3);
+                    pstmt4.setString(1,prodID);
+                    pstmt4.executeUpdate();
+                }
+            }
+            
+            
+            
+            pstmt.executeUpdate();
+            updateProductsLists();
+            updateSalesList();
+            
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        
+        try {
+            
+            String query1 = "update vendas set status = ? where venda_ID = ?" ;
+            String newStatus = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+            
+            PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
+            pstmt.setString(1,newStatus);
+            pstmt.setString(2, jTextField25.getText());
+            pstmt.executeUpdate();
+            
+            String entregue = "Entregue";
+            if (newStatus == entregue)
+            {
+                Date currentDate = new Date();
+                java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
+
+                String query2 = "update vendas set data_entrega = ? where venda_ID = ?" ;
+                PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
+                pstmt2.setDate(1,sqlDate);
+                pstmt2.setString(2, jTextField25.getText());
+                pstmt2.executeUpdate();
+            } else {
+                
+                String query3 = "update vendas set data_entrega = ? where venda_ID = ?" ;
+                PreparedStatement pstmt3 = mainframe.con.prepareStatement(query3);
+                pstmt3.setDate(1,null);
+                pstmt3.setString(2, jTextField25.getText());
+                pstmt3.executeUpdate();
+            }
+               
+            
+            
+            updateSalesList();
+            
+            
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
@@ -1079,9 +1205,9 @@ public class Home extends javax.swing.JPanel {
         int selectedIndex = jList1.getSelectedIndex() + 1;
 
         try {
-            if (rs1.absolute(selectedIndex))
+            if (ProductsResultSet.absolute(selectedIndex))
             {
-                updateProdutos(); 
+                updateProductsFields(); 
             }
         } catch (SQLException sqle1)
         {
@@ -1092,9 +1218,9 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            rs1.first();
+            ProductsResultSet.first();
             jList1.setSelectedIndex(0);
-             updateProdutos(); 
+             updateProductsFields(); 
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
@@ -1103,13 +1229,13 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        try {
-            if (rs1.next()) {
+            if (ProductsResultSet.next()) {
                 jList1.setSelectedIndex(jList1.getSelectedIndex()+1);
-                updateProdutos(); 
+                updateProductsFields(); 
             }
             else 
             {
-                rs1.previous();
+                ProductsResultSet.previous();
             }
         } catch (SQLException sqle1)
         {
@@ -1119,13 +1245,13 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            if (rs1.previous())
+            if (ProductsResultSet.previous())
             {
                 jList1.setSelectedIndex(jList1.getSelectedIndex()-1);
-                updateProdutos(); 
+                updateProductsFields(); 
             }
             else {
-                rs1.next();
+                ProductsResultSet.next();
             }
         } catch (SQLException sqle1)
         {
@@ -1135,9 +1261,9 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
-            rs1.last();
+            ProductsResultSet.last();
             jList1.setSelectedIndex(jList1.getModel().getSize()-1);
-            updateProdutos(); 
+            updateProductsFields(); 
         } catch (SQLException sqle1)
         {
             sqle1.printStackTrace();
@@ -1148,16 +1274,9 @@ public class Home extends javax.swing.JPanel {
         int selectedIndex = jList2.getSelectedIndex() + 1;
 
         try {
-            if (rs2.absolute(selectedIndex))
+            if (SalesResultSet.absolute(selectedIndex))
             {
-                jTextField7.setText(rs2.getString("venda_ID"));
-                jTextField8.setText(rs2.getString("prod_ID"));
-                jTextField9.setText(rs2.getString("quantidade"));
-                jTextField10.setText(rs2.getString("clientes.nome") + " " + rs2.getString("clientes.sobrenome"));
-                jTextField11.setText("Rua " + rs2.getString("rua") + ", " + rs2.getString("numero") + " - " + rs2.getString("bairro"));
-                jTextField12.setText(rs2.getString("data"));
-                jTextField13.setText(rs2.getString("status"));
-               // jTextField14.setText(rs2.getString(""));
+                updateSalesFields();
             }
         } catch (SQLException sqle1)
         {
@@ -1165,6 +1284,7 @@ public class Home extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_jList2ValueChanged
 
+    /* Registers new product */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             String query = "insert into produtos values (?, ?, ?, ?)";
@@ -1183,31 +1303,37 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
+            /* Updates database */
             String query1 = "update produtos set quantidade = quantidade - ? where prod_ID = ?" ;
             PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
             pstmt.setString(1,jTextField42.getText());
-            rs1.absolute(jList3.getSelectedIndex()+1);
-            pstmt.setString(2, rs1.getString(1));
+            ProductsResultSet.absolute(jList3.getSelectedIndex()+1);
+            pstmt.setString(2, ProductsResultSet.getString(1));
             pstmt.executeUpdate();
+            
             PreparedStatement pstmt3 = mainframe.con.prepareStatement("select quantidade from produtos where prod_ID = ?");
-            pstmt3.setString(1,rs1.getString(1));
+            pstmt3.setString(1,ProductsResultSet.getString(1));
             ResultSet rs = pstmt3.executeQuery();
             if (rs.next())
             {
+                /* Removes from database if there are no products remaining */
                 if (rs.getInt("quantidade") <= 0)
                 {
                     String query2 = "delete from produtos where prod_ID = ?";
                     PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
-                    pstmt2.setString(1,rs1.getString(1));
+                    pstmt2.setString(1,ProductsResultSet.getString(1));
                     pstmt2.executeUpdate();
                 }
             }
 
+            /* Updates current quantity field */
             PreparedStatement pstmt4 = mainframe.con.prepareStatement("select * from produtos",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rs1 = pstmt4.executeQuery();
-            rs1.absolute(jList3.getSelectedIndex()+1);
+            ProductsResultSet = pstmt4.executeQuery();
+            ProductsResultSet.absolute(jList3.getSelectedIndex()+1);  
+            jTextField6.setText(ProductsResultSet.getString(4));
             
-            jTextField6.setText(rs1.getString(4));
+            updateProductsFields();
+            
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
@@ -1225,9 +1351,9 @@ public class Home extends javax.swing.JPanel {
         int selectedIndex = jList3.getSelectedIndex() + 1;
 
         try {
-            if (rs1.absolute(selectedIndex))
+            if (ProductsResultSet.absolute(selectedIndex))
             {
-                jTextField6.setText(rs1.getString(4));
+                jTextField6.setText(ProductsResultSet.getString(4));
             }
         } catch (SQLException sqle1)
         {
@@ -1266,7 +1392,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1317,7 +1442,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField27;
