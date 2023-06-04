@@ -22,7 +22,7 @@ public class loadImagens {
         Connection con;
         
         //Carregamento das capas
-        String caminho = "C:\\Users\\franc.ACERASPIRE5\\Desktop\\ProjetoAPS\\blobzin";
+        String caminho = "D:\\User\\Desktop\\ProjetoAPS\\blobzin";
         try {
             con = DriverManager.getConnection(url, usuario, senha); 
              // Lista de arquivos no diretório de imagens

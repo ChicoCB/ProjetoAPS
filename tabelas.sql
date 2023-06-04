@@ -29,7 +29,7 @@ create table clientes (
 );
 
 create table enderecos (
-	endereco_ID varchar(8),
+	endereco_ID varchar(20),
 	client_ID varchar(8),
 	bairro varchar(20),
     rua varchar(40),

@@ -1,27 +1,64 @@
-insert into users values ('001','Francisco','1234',true);
-insert into produtos values('1','peca1','500','3', NULL);
-insert into produtos values('2','peca2','1000','1', NULL);
-insert into produtos values('3','peca3','200','1', NULL);
-insert into produtos values('4','peca4','100','6', NULL);
-insert into produtos values('5','peca5','600','7', NULL);
-insert into produtos values('6','peca6','800','8', NULL);
-insert into produtos values('7','peca7','900','12', NULL);
-insert into produtos values('8','peca8','510','2', NULL);
-insert into produtos values('9','peca9','570','1', NULL);
-insert into produtos values('10','peca10','910','1', NULL);
-insert into clientes values('11112','Barbara','Rodrigue');
-insert into clientes values('11113','Rodrigo','Maia');
-insert into clientes values('11114','Guilherme','Alves');
-insert into clientes values('11115','Juliano','Ferreira');
-insert into clientes values('11116','Pedro','Paiva');
-insert into enderecos values('00001','11112','Paulista','Alfonso','71');
-insert into enderecos values('00002','11113','Paulista','Maio','911');
-insert into enderecos values('00003','11114','Centro','Avenida Brasil','128');
-insert into enderecos values('00004','11115','Vila Olímpia','Treze de Maio','551');
-insert into enderecos values('00005','11116','Rudge Ramos','Rua das Flores','741');
-insert into vendas values('00001','6','3','11112','2021-09-12','Em processamento',NULL);
-insert into vendas values('00002','5','3','11113','2021-09-13','Em processamento',NULL);
-insert into vendas values('00003','4','3','11114','2021-09-14','A caminho',NULL);
-insert into vendas values('00004','3','3','11115','2021-09-15','Entregue', '2021-10-20');
-insert into vendas values('00005','2','1','11116','2021-09-16','Cancelada',NULL);
+-- Inserção de registros na tabela users
+INSERT INTO users (user_ID, nome, senha, super_user)
+VALUES ('user1', 'Francisco', '1234', false),
+       ('user2', 'Maria Santos', 'senha456', true),
+       ('user3', 'Pedro Souza', 'senha789', false);
 
+-- Inserção de registros na tabela produtos
+INSERT INTO produtos (prod_ID, nome, preco, quantidade, imagem)
+VALUES ('1', 'Camiseta', '29.99', '50', null),
+       ('2', 'Calça Jeans', '79.99', '30', null),
+       ('3', 'Tênis', '99.99', '20', null),
+       ('4', 'Moletom', '49.99', '40', null),
+       ('5', 'Boné', '19.99', '100', null),
+       ('6', 'Bolsa', '39.99', '10', null),
+       ('7', 'Óculos de Sol', '59.99', '15', null),
+       ('8', 'Relógio', '89.99', '5', null),
+       ('9', 'Chapéu', '24.99', '30', null),
+       ('10', 'Cinto', '14.99', '50', null);
+
+-- Inserção de registros na tabela clientes
+INSERT INTO clientes (client_ID, nome, sobrenome)
+VALUES ('client1', 'Ana', 'Silva'),
+       ('client2', 'Carlos', 'Santos'),
+       ('client3', 'Mariana', 'Almeida');
+
+-- Inserção de registros na tabela enderecos
+INSERT INTO enderecos (endereco_ID, client_ID, bairro, rua, numero)
+VALUES ('endereco1', 'client1', 'Centro', 'Rua Principal', '123'),
+       ('endereco2', 'client2', 'Bairro Novo', 'Avenida das Flores', '456'),
+       ('endereco3', 'client3', 'Vila Feliz', 'Rua das Palmeiras', '789');
+
+-- Inserção de registros na tabela vendas
+INSERT INTO vendas (venda_ID, prod_ID, quantidade, client_ID, data, status, data_entrega)
+VALUES ('venda1', '1', '2', 'client1', '2023-06-01', 'Em andamento', null),
+       ('venda2', '3', '1', 'client2', '2023-06-02', 'Concluído', '2023-06-03'),
+       ('venda3', '5', '3', 'client1', '2023-06-03', 'Em andamento', null),
+       ('venda4', '2', '2', 'client3', '2023-06-04', 'Em andamento', null),
+       ('venda5', '7', '1', 'client2', '2023-06-05', 'Em andamento', null);
+
+-- Inserção de registros na tabela users
+INSERT INTO users (user_ID, nome, senha, super_user)
+VALUES ('user4', 'Carlos Oliveira', 'senha987', false),
+       ('user5', 'Ana Paula', 'senha654', false),
+       ('user6', 'Fernanda Pereira', 'senha321', true);
+
+-- Inserção de registros na tabela clientes
+INSERT INTO clientes (client_ID, nome, sobrenome)
+VALUES ('client4', 'Rafael', 'Silva'),
+       ('client5', 'Patricia', 'Santos'),
+       ('client6', 'Lucas', 'Ferreira');
+
+-- Inserção de registros na tabela enderecos
+INSERT INTO enderecos (endereco_ID, client_ID, bairro, rua, numero)
+VALUES ('endereco4', 'client4', 'Centro', 'Rua das Flores', '10'),
+       ('endereco5', 'client5', 'Bairro Novo', 'Rua das Palmeiras', '20'),
+       ('endereco6', 'client6', 'Vila Feliz', 'Avenida Principal', '30');
+
+-- Inserção de registros na tabela vendas
+INSERT INTO vendas (venda_ID, prod_ID, quantidade, client_ID, data, status, data_entrega)
+VALUES ('venda6', '1', '3', 'client4', '2023-06-06', 'Em andamento', null),
+       ('venda7', '3', '2', 'client5', '2023-06-07', 'Em andamento', null),
+       ('venda8', '5', '1', 'client6', '2023-06-08', 'Em andamento', null),
+       ('venda9', '2', '4', 'client4', '2023-06-09', 'Em andamento', null),
+       ('venda10', '7', '3', 'client5', '2023-06-10', 'Em andamento', null);
