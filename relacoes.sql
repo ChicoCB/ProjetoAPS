@@ -1,64 +1,84 @@
--- Inserção de registros na tabela users
-INSERT INTO users (user_ID, nome, senha, super_user)
-VALUES ('user1', 'Francisco', '1234', false),
-       ('user2', 'Maria Santos', 'senha456', true),
-       ('user3', 'Pedro Souza', 'senha789', false);
+-- Inserting data into users table
+INSERT INTO users (nome, senha, super_user) VALUES
+    ('Francisco', '1234', 1),
+    ('Jane Smith', 'pass456', 0),
+    ('Mark Johnson', 'test789', 0);
 
--- Inserção de registros na tabela produtos
-INSERT INTO produtos (prod_ID, nome, preco, quantidade, imagem)
-VALUES ('1', 'Camiseta', '29.99', '50', null),
-       ('2', 'Calça Jeans', '79.99', '30', null),
-       ('3', 'Tênis', '99.99', '20', null),
-       ('4', 'Moletom', '49.99', '40', null),
-       ('5', 'Boné', '19.99', '100', null),
-       ('6', 'Bolsa', '39.99', '10', null),
-       ('7', 'Óculos de Sol', '59.99', '15', null),
-       ('8', 'Relógio', '89.99', '5', null),
-       ('9', 'Chapéu', '24.99', '30', null),
-       ('10', 'Cinto', '14.99', '50', null);
+-- Inserting data into produtos table
+INSERT INTO produtos (nome, preco, quantidade, imagem) VALUES
+    ('Product A', '10.99', '100', NULL),
+    ('Product B', '15.99', '50', NULL),
+    ('Product C', '5.99', '200', NULL);
 
--- Inserção de registros na tabela clientes
-INSERT INTO clientes (client_ID, nome, sobrenome)
-VALUES ('client1', 'Ana', 'Silva'),
-       ('client2', 'Carlos', 'Santos'),
-       ('client3', 'Mariana', 'Almeida');
+-- Inserting data into clientes table
+INSERT INTO clientes (nome, sobrenome) VALUES
+    ('Alice', 'Brown'),
+    ('Bob', 'Smith'),
+    ('Charlie', 'Johnson');
 
--- Inserção de registros na tabela clientes
-INSERT INTO clientes (client_ID, nome, sobrenome)
-VALUES ('client4', 'Rafael', 'Silva'),
-       ('client5', 'Patricia', 'Santos'),
-       ('client6', 'Lucas', 'Ferreira');
+-- Inserting data into enderecos table
+INSERT INTO enderecos (client_ID, bairro, rua, numero) VALUES
+    (1, 'Downtown', 'Main Street', '123'),
+    (2, 'Suburb', 'Park Avenue', '456'),
+    (3, 'City Center', 'Broadway', '789');
 
--- Inserção de registros na tabela enderecos
-INSERT INTO enderecos (endereco_ID, client_ID, bairro, rua, numero)
-VALUES ('endereco1', 'client1', 'Centro', 'Rua Principal', '123'),
-       ('endereco2', 'client2', 'Bairro Novo', 'Avenida das Flores', '456'),
-       ('endereco3', 'client3', 'Vila Feliz', 'Rua das Palmeiras', '789');
+-- Inserting data into vendas table
+INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) VALUES
+    (1, 1, '5', 1, '2023-06-01', 'Em processamento', NULL),
+    (2, 2, '2', 2, '2023-06-02', 'Entregue', '2023-06-05'),
+    (3, 2, '10', 3, '2023-06-03', 'A caminho', NULL);
+    
+-- Inserts for produtos table
+INSERT INTO produtos (nome, preco, quantidade, imagem) VALUES
+    ('Product D', '8.99', '75', NULL),
+    ('Product E', '12.99', '30', NULL),
+    ('Product F', '6.99', '150', NULL),
+    ('Product G', '9.99', '90', NULL);
 
--- Inserção de registros na tabela enderecos
-INSERT INTO enderecos (endereco_ID, client_ID, bairro, rua, numero)
-VALUES ('endereco4', 'client4', 'Centro', 'Rua das Flores', '10'),
-       ('endereco5', 'client5', 'Bairro Novo', 'Rua das Palmeiras', '20'),
-       ('endereco6', 'client6', 'Vila Feliz', 'Avenida Principal', '30');
+-- Inserts for clientes table
+INSERT INTO clientes (nome, sobrenome) VALUES
+    ('Eve', 'Johnson'),
+    ('Frank', 'Brown'),
+    ('Grace', 'Smith'),
+    ('Henry', 'Taylor');
+    
+-- Inserts for clientes table
+INSERT INTO clientes (nome, sobrenome) VALUES
+    ('Ivy', 'Anderson'),
+    ('Jack', 'Wilson'),
+    ('Kate', 'Miller');
 
--- Inserção de registros na tabela vendas
-INSERT INTO vendas (venda_ID, prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega)
-VALUES ('venda1', '1','endereco3', '2', 'client1', '2023-06-01', 'Em andamento', null),
-       ('venda2', '3','endereco2', '1', 'client2', '2023-06-02', 'Concluído', '2023-06-03'),
-       ('venda3', '5','endereco3', '3', 'client1', '2023-06-03', 'Em andamento', null),
-       ('venda4', '2','endereco4', '2', 'client3', '2023-06-04', 'Em andamento', null),
-       ('venda5', '7','endereco6', '1', 'client2', '2023-06-05', 'Em andamento', null);
+-- Inserts for enderecos table
+INSERT INTO enderecos (client_ID, bairro, rua, numero) VALUES
+    (4, 'Suburb', 'Oak Street', '789'),
+    (5, 'City Center', 'Maple Avenue', '123'),
+    (6, 'Downtown', 'Elm Road', '456'),
+    (7, 'Suburb', 'Cedar Lane', '321');
 
--- Inserção de registros na tabela users
-INSERT INTO users (user_ID, nome, senha, super_user)
-VALUES ('user4', 'Carlos Oliveira', 'senha987', false),
-       ('user5', 'Ana Paula', 'senha654', false),
-       ('user6', 'Fernanda Pereira', 'senha321', true);
+-- Inserts for vendas table
+INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) VALUES
+    (4, 3, '3', 5, '2023-06-04', 'Em processamento', NULL),
+    (1, 2, '8', 6, '2023-06-05', 'Entregue', '2023-06-07'),
+    (2, 4, '5', 7, '2023-06-06', 'A caminho', NULL),
+    (3, 1, '12', 8, '2023-06-07', 'Em processamento', NULL);
+    
+    -- Inserts for produtos table
+INSERT INTO produtos (nome, preco, quantidade, imagem) VALUES
+    ('Product H', '7.99', '80', NULL),
+    ('Product I', '11.99', '20', NULL),
+    ('Product J', '4.99', '250', NULL);
 
--- Inserção de registros na tabela vendas
-INSERT INTO vendas (venda_ID, prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega)
-VALUES ('venda6', '1','endereco1', '3', 'client4', '2023-06-06', 'Em andamento', null),
-       ('venda7', '3','endereco2', '2', 'client5', '2023-06-07', 'Em andamento', null),
-       ('venda8', '5','endereco1', '1', 'client6', '2023-06-08', 'Em andamento', null),
-       ('venda9', '2','endereco4', '4', 'client4', '2023-06-09', 'Em andamento', null),
-       ('venda10', '7','endereco3', '3', 'client5', '2023-06-10', 'Em andamento', null);
+
+-- Inserts for enderecos table
+INSERT INTO enderecos (client_ID, bairro, rua, numero) VALUES
+    (8, 'City Center', 'Oak Avenue', '456'),
+    (9, 'Downtown', 'Elm Street', '789'),
+    (10, 'Suburb', 'Cedar Road', '123');
+
+-- Inserts for vendas table
+INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) VALUES
+    (5, 4, '6', 9, '2023-06-08', 'Entregue', '2023-06-10'),
+    (6, 2, '3', 10, '2023-06-09', 'A caminho', NULL),
+    (7, 3, '15', 8, '2023-06-10', 'Em processamento', NULL);
+
+

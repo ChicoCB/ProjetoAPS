@@ -66,11 +66,9 @@ public class Home extends javax.swing.JPanel {
         jTextField18 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -103,8 +101,6 @@ public class Home extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -286,19 +282,11 @@ public class Home extends javax.swing.JPanel {
 
         jLabel2.setText("Adicionar produtos");
 
-        jLabel3.setText("ID:");
-
         jLabel4.setText("Nome:");
 
         jLabel5.setText("Preço:");
 
         jLabel6.setText("Quantidade:");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jButton5.setText("Adicionar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -350,23 +338,12 @@ public class Home extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(470, 470, 470))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(473, 473, 473))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel5)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)))
+                        .addComponent(jLabel4))
                     .addComponent(jLabel6))
                 .addGap(112, 112, 112)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,24 +365,28 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                     .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField1))
+                    .addComponent(jTextField4))
                 .addGap(77, 77, 77)
                 .addComponent(jButton5)
                 .addGap(74, 74, 74))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(473, 473, 473))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(466, 466, 466))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -413,9 +394,7 @@ public class Home extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton5)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -435,7 +414,7 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jLabel43)
                             .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 54, Short.MAX_VALUE))
+                .addGap(0, 57, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Gerenciar Estoque", jPanel2);
@@ -587,15 +566,6 @@ public class Home extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Vendas Registradas", jPanel3);
 
-        jLabel22.setText("ID da venda:");
-        jLabel22.setFocusable(false);
-
-        jTextField19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField19ActionPerformed(evt);
-            }
-        });
-
         jLabel23.setText("ID do produto:");
         jLabel23.setFocusable(false);
 
@@ -651,11 +621,9 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jLabel23)
                             .addComponent(jLabel24)
                             .addComponent(jLabel25)
-                            .addComponent(jLabel22)
                             .addComponent(jLabel26))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField19)
                             .addComponent(jTextField20)
                             .addComponent(jTextField21)
                             .addComponent(jTextField22)
@@ -686,13 +654,9 @@ public class Home extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -967,8 +931,11 @@ public class Home extends javax.swing.JPanel {
         try {
               List<String> lista = new ArrayList<String>();
               while (ProductsResultSet.next()) {
-                  String nome = ProductsResultSet.getString("nome");
-                  lista.add(nome);
+                  if (ProductsResultSet.getInt("quantidade") > 0) //Hides 0 quantity products
+                  {
+                        String nome = ProductsResultSet.getString("nome");
+                        lista.add(nome);
+                  }
               }
               DefaultListModel<String> modelo = new DefaultListModel<String>();
               DefaultListModel<String> modelo2 = new DefaultListModel<String>();
@@ -1010,6 +977,7 @@ public class Home extends javax.swing.JPanel {
     }
     
     private void updateProductsFields() {
+        
         try {
             jTextField15.setText(ProductsResultSet.getString(1));
             jTextField16.setText(ProductsResultSet.getString(2));
@@ -1059,10 +1027,44 @@ public class Home extends javax.swing.JPanel {
         
     }
     
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
+    private void updateProductQuantity(String subtractQuantity, String prodID) {
+        
+        try {
+            
+            updateProductsResultSet();
+            
+            String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?" ;
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
+            pstmt2.setString(1,subtractQuantity);
+            pstmt2.setString(2, prodID);
+            pstmt2.executeUpdate();
+            
+            // Método para deletar produtos com quantidade 0 (não funciona pois se alguma venda referencia esse produto ele não deixa deletar)
+            //Solução:  Apenas ocultar produtos com quantidade 0
+            /* 
+            PreparedStatement pstmt3 = mainframe.con.prepareStatement("select quantidade from produtos where prod_ID = ?");
+            pstmt3.setString(1,prodID);
+            ResultSet rs = pstmt3.executeQuery();
+            if (rs.next())
+            {
+                 //Removes from database if there are no products remaining 
+                if (rs.getInt("quantidade") <= 0)
+                {
+                    String query3 = "delete from produtos where prod_ID = ?";
+                    PreparedStatement pstmt4 = mainframe.con.prepareStatement(query3);
+                    pstmt4.setString(1,prodID);
+                    pstmt4.executeUpdate();
+                }
+            }
+            */
+            
+            updateProductsResultSet();
+            
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
+    }
+    
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
@@ -1079,59 +1081,35 @@ public class Home extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField15ActionPerformed
 
-    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19ActionPerformed
-
     /* Registers new sale */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         
         try {
-            String query = "insert into vendas values (?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            updateSalesResultSet();
+            String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
-            pstmt.setString(1,jTextField19.getText());
-            pstmt.setString(2,jTextField20.getText());
-            pstmt.setString(3,jTextField21.getText());
-            pstmt.setString(4,jTextField22.getText());
-            pstmt.setString(5,jTextField23.getText());
+            pstmt.setString(1,jTextField20.getText());
+            pstmt.setString(2,jTextField21.getText());
+            pstmt.setString(3,jTextField22.getText());
+            pstmt.setString(4,jTextField23.getText());
  
             Date currentDate = new Date();
             java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-            pstmt.setDate(6,sqlDate);
+            pstmt.setDate(5,sqlDate);
             
-            pstmt.setString(7,"Em processamento");
-            pstmt.setString(8,null);
-            
-            
-            /* Updates products */   
-            String quantitySold = jTextField22.getText();
-            String prodID = jTextField20.getText();
-            
-             
-            String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?" ;
-            PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
-            pstmt2.setString(1,quantitySold);
-            pstmt2.setString(2, prodID);
-            pstmt2.executeUpdate();
-            
-            PreparedStatement pstmt3 = mainframe.con.prepareStatement("select quantidade from produtos where prod_ID = ?");
-            pstmt3.setString(1,prodID);
-            ResultSet rs = pstmt3.executeQuery();
-            if (rs.next())
-            {
-                /* Removes from database if there are no products remaining */
-                if (rs.getInt("quantidade") <= 0)
-                {
-                    String query3 = "delete from produtos where prod_ID = ?";
-                    PreparedStatement pstmt4 = mainframe.con.prepareStatement(query3);
-                    pstmt4.setString(1,prodID);
-                    pstmt4.executeUpdate();
-                }
-            }
-            
-            
-            
+            pstmt.setString(6,"Em processamento");
+            pstmt.setString(7,null);
             pstmt.executeUpdate();
+            
+            /* Updates product quantity */   
+            String quantitySold = jTextField22.getText();
+            String prodID = jTextField20.getText(); 
+            updateProductQuantity(quantitySold,prodID);
+            
+            
+            
+            /* Updates Lists */
             updateProductsLists();
             updateSalesList();
             
@@ -1287,12 +1265,11 @@ public class Home extends javax.swing.JPanel {
     /* Registers new product */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-            String query = "insert into produtos values (?, ?, ?, ?)";
+            String query = "insert into produtos (nome, preco, quantidade) values (?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
-            pstmt.setString(1,jTextField1.getText());
-            pstmt.setString(2,jTextField2.getText());
-            pstmt.setString(3,jTextField3.getText());
-            pstmt.setString(4,jTextField4.getText());
+            pstmt.setString(1,jTextField2.getText());
+            pstmt.setString(2,jTextField3.getText());
+            pstmt.setString(3,jTextField4.getText());
             pstmt.executeUpdate();
             updateProductsLists();
         } catch (SQLException sqle1) {
@@ -1303,36 +1280,25 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
-            /* Updates database */
-            String query1 = "update produtos set quantidade = quantidade - ? where prod_ID = ?" ;
-            PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
-            pstmt.setString(1,jTextField42.getText());
-            ProductsResultSet.absolute(jList3.getSelectedIndex()+1);
-            pstmt.setString(2, ProductsResultSet.getString(1));
-            pstmt.executeUpdate();
             
-            PreparedStatement pstmt3 = mainframe.con.prepareStatement("select quantidade from produtos where prod_ID = ?");
-            pstmt3.setString(1,ProductsResultSet.getString(1));
-            ResultSet rs = pstmt3.executeQuery();
-            if (rs.next())
-            {
-                /* Removes from database if there are no products remaining */
-                if (rs.getInt("quantidade") <= 0)
-                {
-                    String query2 = "delete from produtos where prod_ID = ?";
-                    PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
-                    pstmt2.setString(1,ProductsResultSet.getString(1));
-                    pstmt2.executeUpdate();
-                }
-            }
+            /* Updates product quantity */
+            
+            if ((jList3.getSelectedIndex()+1) != ProductsResultSet.getRow())
+                ProductsResultSet.absolute(jList3.getSelectedIndex()+1); //Obtains selected list index
+            
+            String quantityRemoved = jTextField42.getText();
+            String prodID = ProductsResultSet.getString(1);
+            
+            updateProductQuantity(quantityRemoved, prodID);
 
             /* Updates current quantity field */
-            PreparedStatement pstmt4 = mainframe.con.prepareStatement("select * from produtos",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ProductsResultSet = pstmt4.executeQuery();
-            ProductsResultSet.absolute(jList3.getSelectedIndex()+1);  
-            jTextField6.setText(ProductsResultSet.getString(4));
+            if (ProductsResultSet.absolute(jList3.getSelectedIndex()+1)) //Obtains selected list index
+                jTextField6.setText(ProductsResultSet.getString(4));
+            else
+                jTextField6.setText("0");
             
-            updateProductsFields();
+            
+            updateProductsLists();
             
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1387,14 +1353,12 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1426,7 +1390,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1436,7 +1399,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
