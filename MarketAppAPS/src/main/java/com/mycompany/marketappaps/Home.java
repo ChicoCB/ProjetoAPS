@@ -147,6 +147,12 @@ public class Home extends javax.swing.JPanel {
         jTextField41 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+
         jLabel1.setFocusable(false);
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -1326,6 +1332,11 @@ public class Home extends javax.swing.JPanel {
             sqle1.printStackTrace();
         } 
     }//GEN-LAST:event_jList3ValueChanged
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        System.out.println("Relatório atualizado¹");
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

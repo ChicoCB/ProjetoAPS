@@ -16,7 +16,7 @@ public class MarketAppAPS {
 
         String url = "jdbc:mysql://localhost/projetoaps";
         String user = "root";
-        String password = "fran3828";
+        String password = "Henrique312";
         try {
             con = DriverManager.getConnection(url, user, password);
         } catch (SQLException sqle1) {
