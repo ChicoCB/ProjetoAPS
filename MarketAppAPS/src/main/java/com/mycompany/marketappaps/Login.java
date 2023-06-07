@@ -14,7 +14,8 @@ public class Login extends javax.swing.JPanel {
 
     private final MainFrame mainframe;
     private ResultSet user_password_set;
-
+    private String loggedUser; //Usuário logado
+    
     /**
      * @param mainframe The principal "window" where the GUI application it's
      * based
@@ -125,7 +126,10 @@ public class Login extends javax.swing.JPanel {
 
                 if (nome.equals(nome_inserido)) {
                     if (senha.equals(senha_inserida)) {
-                        return true; // Found correct credentials
+                        {
+                            loggedUser = nome;
+                            return true; // Found correct credentials
+                        }
                     }
                 }
 
@@ -151,9 +155,26 @@ public class Login extends javax.swing.JPanel {
             mainframe.setSize(1024, 768);
             mainframe.setLocation(400, 150);
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public boolean isSuperUser()
+    {
+        try {
+            //Vai até o usuário correto
+            while (!user_password_set.getString("nome").equals(loggedUser))
+                user_password_set.next();
+            
+            String SU = user_password_set.getString("super_user");
+            if (SU.equals("1"))
+                return true;
+            
+            return false;
+            
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+            return false;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

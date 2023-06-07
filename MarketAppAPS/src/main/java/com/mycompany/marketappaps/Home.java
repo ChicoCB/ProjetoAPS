@@ -12,7 +12,9 @@ import javax.swing.ImageIcon;
 import java.io.*;
 import java.awt.Image;
 import java.util.Date;
-
+import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 /**
  * @author luis
  */
@@ -21,17 +23,51 @@ public class Home extends javax.swing.JPanel {
     private final MainFrame mainframe;
     private ResultSet ProductsResultSet;
     private ResultSet SalesResultSet;
-
+    private ResultSet NonDeliveredSalesResultSet;
+    
     public Home(MainFrame mainframe) {
 
         initComponents();
-
+            
         this.mainframe = mainframe;
         ProductsResultSet = null;
         SalesResultSet = null;
 
         updateProductsLists();
-        updateSalesList();
+        updateSalesLists();
+        
+        /* Event Listener para quando muda de tab */
+        jTabbedPane1.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int selectedIndex = jTabbedPane1.getSelectedIndex();
+                // Perform actions based on the selected tab index
+                if (selectedIndex == 5)
+                {
+                    if (!mainframe.login.isSuperUser())
+                    {
+                        mainframe.home.jPanel6.setEnabled(false); // Disables the tab
+                        JOptionPane.showMessageDialog(null, "Você não tem permissão para cadastrar funcionários.");
+                        jTabbedPane1.setSelectedIndex(0);
+                    } 
+                }
+                if (selectedIndex == 4)
+                {
+                     //Pass database connection to Relatorio
+                    Relatorio rel = new Relatorio(mainframe.con);
+
+                    qntdProdEstoq.setText(rel.updateQntdProdEst());
+                    qntdVendas.setText(rel.updateQntdVendas());
+                    valorTotalVendas.setText(rel.updateValorTotalVendas());
+                    clientesNovos.setText(rel.updateClientesNovos());
+                    gastosEntregas.setText(rel.updateGastosEntregas());
+                    gastoProdutos.setText(rel.updateGastoProdutos());
+                    gastoTotal.setText(rel.updateGastoTotal());
+                    lucroTotal.setText(rel.updateLucroTotal());
+                }
+            }
+        });
+        
     }
 
     /**
@@ -113,6 +149,8 @@ public class Home extends javax.swing.JPanel {
         jTextField25 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
@@ -142,6 +180,8 @@ public class Home extends javax.swing.JPanel {
         ganhoGastosTotais = new javax.swing.JTextField();
         ganhoLucrosTotais = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -250,7 +290,7 @@ public class Home extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +317,7 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jLabel21)
                             .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ver Estoque", null, jPanel1, "");
@@ -384,7 +424,7 @@ public class Home extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -416,7 +456,7 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jLabel43)
                             .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 57, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Gerenciar Estoque", jPanel2);
@@ -525,7 +565,7 @@ public class Home extends javax.swing.JPanel {
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,13 +629,13 @@ public class Home extends javax.swing.JPanel {
 
         jLabel29.setText("Atualizar Status");
 
-        jLabel30.setText("ID da venda:");
+        jLabel30.setText("Status atual:");
 
         jLabel31.setText("Novo Status:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Em processamento", "A caminho", "Entregue", "Cancelada" }));
-        jComboBox1.setSelectedIndex(1);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A caminho", "Entregue", "Cancelada" }));
 
+        jTextField25.setFocusable(false);
         jTextField25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField25ActionPerformed(evt);
@@ -610,6 +650,18 @@ public class Home extends javax.swing.JPanel {
         });
 
         jLabel28.setText("Registrar Vendas");
+
+        jList4.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList4.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList4ValueChanged(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jList4);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -634,29 +686,34 @@ public class Home extends javax.swing.JPanel {
                         .addComponent(jButton7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(467, 467, 467)
-                        .addComponent(jLabel28))
+                        .addComponent(jLabel28)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel29)
+                        .addGap(338, 338, 338)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel30)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField25))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel31)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(40, 40, 40)
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel31)
+                                    .addComponent(jLabel30))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton8)))))
                 .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(470, 470, 470)
+                .addComponent(jLabel29)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -675,22 +732,25 @@ public class Home extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel29)
-                .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel30)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel30))
+                        .addGap(1, 1, 1)
                         .addComponent(jButton8)
-                        .addGap(3, 3, 3)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel31))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(29, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Gerenciar Vendas", jPanel4);
@@ -792,7 +852,7 @@ public class Home extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel33)
                     .addComponent(jLabel35)
@@ -822,7 +882,7 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(ganhoGastoProdutos)
                     .addComponent(ganhoGastosTotais)
                     .addComponent(ganhoLucrosTotais))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel41)
@@ -889,10 +949,45 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jButton10)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Relatório", jPanel5);
+
+        jPanel6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel6FocusGained(evt);
+            }
+        });
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel6MouseEntered(evt);
+            }
+        });
+
+        jLabel3.setText("Testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(443, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(216, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cadastrar Funcionários", jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -912,6 +1007,7 @@ public class Home extends javax.swing.JPanel {
         jTabbedPane1.getAccessibleContext().setAccessibleName("tab3");
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void updateProductsResultSet() {
         try {
             PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -927,6 +1023,16 @@ public class Home extends javax.swing.JPanel {
         try {
             PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             SalesResultSet = pstmt2.executeQuery();
+
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
+    }
+    
+    private void updateNonDeliveredSalesResultSet() {
+        try {
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID) where status != \"Entregue\"", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            NonDeliveredSalesResultSet = pstmt2.executeQuery();
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -962,29 +1068,41 @@ public class Home extends javax.swing.JPanel {
         }
     }
 
-    private void updateSalesList() {
+    private void updateSalesLists() {
 
         updateSalesResultSet();
-
+        updateNonDeliveredSalesResultSet();
+        
         try {
             List<String> lista2 = new ArrayList<String>();
+            List<String> listaNaoEntregues = new ArrayList<String>();
             while (SalesResultSet.next()) {
                 String venda_ID = SalesResultSet.getString("venda_ID");
                 lista2.add(venda_ID);
+                
+                String entregue = "Entregue";
+                String statusAtual = SalesResultSet.getString("status");
+                if (!statusAtual.equals(entregue))
+                    listaNaoEntregues.add(venda_ID);
             }
             DefaultListModel<String> modelo2 = new DefaultListModel<String>();
-
+            DefaultListModel<String> modeloNaoEntregues = new DefaultListModel<String>();
+            
             for (String venda_ID : lista2) {
-                modelo2.addElement(venda_ID);
+                modelo2.addElement(venda_ID); 
+            }
+            
+            for (String venda_ID : listaNaoEntregues) {
+                modeloNaoEntregues.addElement(venda_ID);
             }
 
             jList2.setModel(modelo2);
+            jList4.setModel(modeloNaoEntregues); //Lista com vendas não entregues (concluídas)
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }
-
     private void updateProductsFields() {
 
         try {
@@ -1092,6 +1210,8 @@ public class Home extends javax.swing.JPanel {
         try {
 
             updateSalesResultSet();
+            updateNonDeliveredSalesResultSet();
+            
             String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
             pstmt.setString(1, jTextField20.getText());
@@ -1114,7 +1234,7 @@ public class Home extends javax.swing.JPanel {
 
             /* Updates Lists */
             updateProductsLists();
-            updateSalesList();
+            updateSalesLists();
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1122,16 +1242,23 @@ public class Home extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    
+    /* Updates Sale Status */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
         try {
 
             String query1 = "update vendas set status = ? where venda_ID = ?";
             String newStatus = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
-
+            
+            int selectedIndex = jList4.getSelectedIndex() + 1;
+            NonDeliveredSalesResultSet.absolute(selectedIndex); //Obtains selected list index
+            
+            String ID = NonDeliveredSalesResultSet.getString("venda_ID");
+            
             PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
             pstmt.setString(1, newStatus);
-            pstmt.setString(2, jTextField25.getText());
+            pstmt.setString(2, ID);
             pstmt.executeUpdate();
 
             String entregue = "Entregue";
@@ -1142,18 +1269,24 @@ public class Home extends javax.swing.JPanel {
                 String query2 = "update vendas set data_entrega = ? where venda_ID = ?";
                 PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
                 pstmt2.setDate(1, sqlDate);
-                pstmt2.setString(2, jTextField25.getText());
+                pstmt2.setString(2, ID);
                 pstmt2.executeUpdate();
             } else {
 
                 String query3 = "update vendas set data_entrega = ? where venda_ID = ?";
                 PreparedStatement pstmt3 = mainframe.con.prepareStatement(query3);
                 pstmt3.setDate(1, null);
-                pstmt3.setString(2, jTextField25.getText());
+                pstmt3.setString(2, ID);
                 pstmt3.executeUpdate();
             }
+            
+            updateSalesLists();
+            
+            /* Updates current status field */
+            if (NonDeliveredSalesResultSet.absolute(selectedIndex)) //Obtains selected list index
+                jTextField25.setText(NonDeliveredSalesResultSet.getString("status"));
 
-            updateSalesList();
+            jList4.setSelectedIndex(selectedIndex - 1); //Atualiza seleção
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1269,16 +1402,17 @@ public class Home extends javax.swing.JPanel {
         try {
 
             /* Updates product quantity */
-            if ((jList3.getSelectedIndex() + 1) != ProductsResultSet.getRow()) {
-                ProductsResultSet.absolute(jList3.getSelectedIndex() + 1); //Obtains selected list index
-            }
+            int selectedIndex = jList3.getSelectedIndex() + 1;
+           
+            ProductsResultSet.absolute(selectedIndex); //Obtains selected list index
+            
             String quantityRemoved = jTextField42.getText();
             String prodID = ProductsResultSet.getString(1);
 
             updateProductQuantity(quantityRemoved, prodID);
 
             /* Updates current quantity field */
-            if (ProductsResultSet.absolute(jList3.getSelectedIndex() + 1)) //Obtains selected list index
+            if (ProductsResultSet.absolute(selectedIndex)) //Obtains selected list index
             {
                 jTextField6.setText(ProductsResultSet.getString(4));
             } else {
@@ -1286,6 +1420,8 @@ public class Home extends javax.swing.JPanel {
             }
 
             updateProductsLists();
+            
+            jList3.setSelectedIndex(selectedIndex - 1);
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1314,19 +1450,8 @@ public class Home extends javax.swing.JPanel {
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
-        //Pass database connection to Relatorio
-        Relatorio rel = new Relatorio(this.mainframe.con);
-
-        qntdProdEstoq.setText(rel.updateQntdProdEst());
-        qntdVendas.setText(rel.updateQntdVendas());
-        valorTotalVendas.setText(rel.updateValorTotalVendas());
-        clientesNovos.setText(rel.updateClientesNovos());
-        gastosEntregas.setText(rel.updateGastosEntregas());
-        gastoProdutos.setText(rel.updateGastoProdutos());
-        gastoTotal.setText(rel.updateGastoTotal());
-        lucroTotal.setText(rel.updateLucroTotal());
-
-
+       
+        
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void ganhoEstoqueProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ganhoEstoqueProdutoActionPerformed
@@ -1337,7 +1462,36 @@ public class Home extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ganhoGastoProdutosActionPerformed
 
+    private void jList4ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList4ValueChanged
+         int selectedIndex = jList4.getSelectedIndex() + 1;
+         
+        try {
+            PreparedStatement pstmt = mainframe.con.prepareStatement("select status from vendas join clientes using(client_ID) join enderecos using(client_ID) where status != \"Entregue\"", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet naoEntregues = pstmt.executeQuery();
+            
+            if (naoEntregues.absolute(selectedIndex)) {
+                jTextField25.setText(naoEntregues.getString("status"));
+            }
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
+    }//GEN-LAST:event_jList4ValueChanged
 
+    private void jPanel6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel6FocusGained
+   
+    }//GEN-LAST:event_jPanel6FocusGained
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseEntered
+        
+    }//GEN-LAST:event_jPanel6MouseEntered
+
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JTextField clientesNovos;
     protected javax.swing.JTextField ganhoClientesNovos;
@@ -1381,6 +1535,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1403,14 +1558,17 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
+    private javax.swing.JList<String> jList4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
