@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.marketappaps;
+
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import java.sql.*;
@@ -16,37 +17,34 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    
     public Login login;
     public Home home;
     public Connection con;
     private CardLayout cardLayout;
-    
-            
+
     public MainFrame(Connection con) {
-        
+
         this.setResizable(false);
-       
-        
-        if (con != null)
+
+        if (con != null) {
             this.con = con;
-        else
+        } else {
             return;
-        
+        }
+
         initComponents();
-       
+
         login = new Login(this);
         home = new Home(this);
-        
+
         login.add(new JLabel("login panel"));
         home.add(new JLabel("home panel"));
 
-         cardLayout = new CardLayout();
-         this.getContentPane().setLayout(cardLayout);
-         this.getContentPane().add(login, "login panel");
-         this.getContentPane().add(home, "home panel");
-        
-         
+        cardLayout = new CardLayout();
+        this.getContentPane().setLayout(cardLayout);
+        this.getContentPane().add(login, "login panel");
+        this.getContentPane().add(home, "home panel");
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -70,21 +68,19 @@ public class MainFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-       
     }
-    
+
     /**
-    *@author  Luis
-    *@param panelName
-    *@returns void
-    *@description  Change the panel in the mainframe
-    **/
+     * @author Luis
+     * @param panelName
+     * @returns void
+     * @description Change the panel in the mainframe
+    *
+     */
     public void switchPanel(String panelName) {
         cardLayout.show(getContentPane(), panelName);
     }
-    
-      
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,13 +106,10 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    
 }

@@ -148,7 +148,7 @@ public class Login extends javax.swing.JPanel {
 
         if (fetch_user_credentials()) {
             mainframe.switchPanel("home panel");
-            mainframe.setSize(1920, 1080);
+            mainframe.setSize(1024, 768);
             mainframe.setLocation(400, 150);
         }
 

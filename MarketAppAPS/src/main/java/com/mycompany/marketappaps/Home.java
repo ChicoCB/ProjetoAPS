@@ -3,15 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.marketappaps;
-import java.awt.Image;
+
 import java.sql.*;
 import java.util.*;
-import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import java.sql.*;
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import java.io.*;
 import java.awt.Image;
@@ -25,17 +21,17 @@ public class Home extends javax.swing.JPanel {
     private final MainFrame mainframe;
     private ResultSet ProductsResultSet;
     private ResultSet SalesResultSet;
-   
+
     public Home(MainFrame mainframe) {
-        
-          initComponents();
-         
-          this.mainframe = mainframe;
-          ProductsResultSet = null;
-          SalesResultSet = null;
-          
-          updateProductsLists();
-          updateSalesList();
+
+        initComponents();
+
+        this.mainframe = mainframe;
+        ProductsResultSet = null;
+        SalesResultSet = null;
+
+        updateProductsLists();
+        updateSalesList();
     }
 
     /**
@@ -127,24 +123,24 @@ public class Home extends javax.swing.JPanel {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
-        jTextField28 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
-        jTextField30 = new javax.swing.JTextField();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
+        qntdProdEstoq = new javax.swing.JTextField();
+        qntdVendas = new javax.swing.JTextField();
+        valorTotalVendas = new javax.swing.JTextField();
+        clientesNovos = new javax.swing.JTextField();
+        gastosEntregas = new javax.swing.JTextField();
+        gastoProdutos = new javax.swing.JTextField();
+        gastoTotal = new javax.swing.JTextField();
+        lucroTotal = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField35 = new javax.swing.JTextField();
-        jTextField36 = new javax.swing.JTextField();
-        jTextField37 = new javax.swing.JTextField();
-        jTextField38 = new javax.swing.JTextField();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
+        ganhoEstoqueProduto = new javax.swing.JTextField();
+        ganhoQntdVendas = new javax.swing.JTextField();
+        ganhoValorTotal = new javax.swing.JTextField();
+        ganhoClientesNovos = new javax.swing.JTextField();
+        ganhoGastosEntregas = new javax.swing.JTextField();
+        ganhoGastoProdutos = new javax.swing.JTextField();
+        ganhoGastosTotais = new javax.swing.JTextField();
+        ganhoLucrosTotais = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -726,31 +722,31 @@ public class Home extends javax.swing.JPanel {
         jLabel40.setText("Gastos com produtos:");
         jLabel40.setFocusable(false);
 
-        jTextField26.setFocusable(false);
-        jTextField26.addActionListener(new java.awt.event.ActionListener() {
+        qntdProdEstoq.setFocusable(false);
+        qntdProdEstoq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField26ActionPerformed(evt);
+                qntdProdEstoqActionPerformed(evt);
             }
         });
 
-        jTextField27.setFocusable(false);
-        jTextField27.addActionListener(new java.awt.event.ActionListener() {
+        qntdVendas.setFocusable(false);
+        qntdVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField27ActionPerformed(evt);
+                qntdVendasActionPerformed(evt);
             }
         });
 
-        jTextField28.setFocusable(false);
+        valorTotalVendas.setFocusable(false);
 
-        jTextField29.setFocusable(false);
+        clientesNovos.setFocusable(false);
 
-        jTextField30.setFocusable(false);
+        gastosEntregas.setFocusable(false);
 
-        jTextField31.setFocusable(false);
+        gastoProdutos.setFocusable(false);
 
-        jTextField32.setFocusable(false);
+        gastoTotal.setFocusable(false);
 
-        jTextField33.setFocusable(false);
+        lucroTotal.setFocusable(false);
 
         jLabel41.setText("Dados");
         jLabel41.setFocusable(false);
@@ -758,21 +754,31 @@ public class Home extends javax.swing.JPanel {
         jLabel42.setText("Ganho em relação ao mês anterior");
         jLabel42.setFocusable(false);
 
-        jTextField34.setFocusable(false);
+        ganhoEstoqueProduto.setFocusable(false);
+        ganhoEstoqueProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ganhoEstoqueProdutoActionPerformed(evt);
+            }
+        });
 
-        jTextField35.setFocusable(false);
+        ganhoQntdVendas.setFocusable(false);
 
-        jTextField36.setFocusable(false);
+        ganhoValorTotal.setFocusable(false);
 
-        jTextField37.setFocusable(false);
+        ganhoClientesNovos.setFocusable(false);
 
-        jTextField38.setFocusable(false);
+        ganhoGastosEntregas.setFocusable(false);
 
-        jTextField39.setFocusable(false);
+        ganhoGastoProdutos.setFocusable(false);
+        ganhoGastoProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ganhoGastoProdutosActionPerformed(evt);
+            }
+        });
 
-        jTextField40.setFocusable(false);
+        ganhoGastosTotais.setFocusable(false);
 
-        jTextField41.setFocusable(false);
+        ganhoLucrosTotais.setFocusable(false);
 
         jButton10.setText("Exportar Relatório");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -798,24 +804,24 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(jLabel38))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField26)
-                    .addComponent(jTextField27)
-                    .addComponent(jTextField28)
-                    .addComponent(jTextField29)
-                    .addComponent(jTextField30)
-                    .addComponent(jTextField31)
-                    .addComponent(jTextField32)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(qntdProdEstoq)
+                    .addComponent(qntdVendas)
+                    .addComponent(valorTotalVendas)
+                    .addComponent(clientesNovos)
+                    .addComponent(gastosEntregas)
+                    .addComponent(gastoProdutos)
+                    .addComponent(gastoTotal)
+                    .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(154, 154, 154)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(jTextField35)
-                    .addComponent(jTextField36)
-                    .addComponent(jTextField37)
-                    .addComponent(jTextField38)
-                    .addComponent(jTextField39)
-                    .addComponent(jTextField40)
-                    .addComponent(jTextField41))
+                    .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(ganhoQntdVendas)
+                    .addComponent(ganhoValorTotal)
+                    .addComponent(ganhoClientesNovos)
+                    .addComponent(ganhoGastosEntregas)
+                    .addComponent(ganhoGastoProdutos)
+                    .addComponent(ganhoGastosTotais)
+                    .addComponent(ganhoLucrosTotais))
                 .addContainerGap(230, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -844,43 +850,43 @@ public class Home extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
-                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(qntdProdEstoq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(qntdVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoQntdVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(clientesNovos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoClientesNovos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
-                    .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoGastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gastoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoGastoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gastoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoGastosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jButton10)
                 .addContainerGap(55, Short.MAX_VALUE))
@@ -906,93 +912,89 @@ public class Home extends javax.swing.JPanel {
         jTabbedPane1.getAccessibleContext().setAccessibleName("tab3");
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void updateProductsResultSet() {
         try {
-            PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-              
+            PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
             ProductsResultSet = pstmt.executeQuery();
-            
-        } catch (SQLException sqle1)
-        {
+
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }
-    
+
     private void updateSalesResultSet() {
         try {
-            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)",ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             SalesResultSet = pstmt2.executeQuery();
-            
-        } catch (SQLException sqle1)
-        {
+
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }
-    
+
     private void updateProductsLists() {
-        
+
         updateProductsResultSet();
-        
+
         try {
-              List<String> lista = new ArrayList<String>();
-              while (ProductsResultSet.next()) {
-                  if (ProductsResultSet.getInt("quantidade") > 0) //Hides 0 quantity products
-                  {
-                        String nome = ProductsResultSet.getString("nome");
-                        lista.add(nome);
-                  }
-              }
-              DefaultListModel<String> modelo = new DefaultListModel<String>();
-              DefaultListModel<String> modelo2 = new DefaultListModel<String>();
-              
-              for (String nome : lista) {
-                    modelo.addElement(nome);
-                    modelo2.addElement(nome);
-              }
-              
-              jList1.setModel(modelo);
-              jList3.setModel(modelo2);
-           
-          } catch (SQLException sqle1) {
-              sqle1.printStackTrace();
-          }
+            List<String> lista = new ArrayList<String>();
+            while (ProductsResultSet.next()) {
+                if (ProductsResultSet.getInt("quantidade") > 0) //Hides 0 quantity products
+                {
+                    String nome = ProductsResultSet.getString("nome");
+                    lista.add(nome);
+                }
+            }
+            DefaultListModel<String> modelo = new DefaultListModel<String>();
+            DefaultListModel<String> modelo2 = new DefaultListModel<String>();
+
+            for (String nome : lista) {
+                modelo.addElement(nome);
+                modelo2.addElement(nome);
+            }
+
+            jList1.setModel(modelo);
+            jList3.setModel(modelo2);
+
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
     }
-    
+
     private void updateSalesList() {
-        
+
         updateSalesResultSet();
-        
-        try { 
-              List<String> lista2 = new ArrayList<String>();
-              while (SalesResultSet.next()) {
-                  String venda_ID = SalesResultSet.getString("venda_ID");
-                  lista2.add(venda_ID);
-              }
-              DefaultListModel<String> modelo2 = new DefaultListModel<String>();
-              
-              for (String venda_ID : lista2) {
-                    modelo2.addElement(venda_ID);
-              }
-              
-              jList2.setModel(modelo2);
-              
-          } catch (SQLException sqle1) {
-              sqle1.printStackTrace();
-          }
+
+        try {
+            List<String> lista2 = new ArrayList<String>();
+            while (SalesResultSet.next()) {
+                String venda_ID = SalesResultSet.getString("venda_ID");
+                lista2.add(venda_ID);
+            }
+            DefaultListModel<String> modelo2 = new DefaultListModel<String>();
+
+            for (String venda_ID : lista2) {
+                modelo2.addElement(venda_ID);
+            }
+
+            jList2.setModel(modelo2);
+
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
     }
-    
+
     private void updateProductsFields() {
-        
+
         try {
             jTextField15.setText(ProductsResultSet.getString(1));
             jTextField16.setText(ProductsResultSet.getString(2));
             jTextField17.setText(ProductsResultSet.getString(3));
             jTextField18.setText(ProductsResultSet.getString(4));
-            
+
             /* Updates product image, if there is one */
-            if (ProductsResultSet.getBinaryStream("imagem") != null)
-            {
+            if (ProductsResultSet.getBinaryStream("imagem") != null) {
                 Image im = ImageIO.read(ProductsResultSet.getBinaryStream("imagem"));
                 // Redimensiona a imagem para caber no JLabel
                 int larguraJLabel = jLabel1.getWidth();
@@ -1001,16 +1003,14 @@ public class Home extends javax.swing.JPanel {
 
                 jLabel1.setIcon(new ImageIcon(imagemRedimensionada));
             }
-            
-        } catch (SQLException sqle1)
-        {
+
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
-        } catch(IOException ioe1)
-        {
-             ioe1.printStackTrace();;
+        } catch (IOException ioe1) {
+            ioe1.printStackTrace();;
         }
     }
-    
+
     private void updateSalesFields() {
         try {
             jTextField7.setText(SalesResultSet.getString("venda_ID"));
@@ -1021,30 +1021,30 @@ public class Home extends javax.swing.JPanel {
             jTextField12.setText(SalesResultSet.getString("data"));
             jTextField13.setText(SalesResultSet.getString("status"));
             String dataEntrega = SalesResultSet.getString("data_entrega");
-            if (dataEntrega == null)
+            if (dataEntrega == null) {
                 jTextField14.setText("Não entregue");
-            else
+            } else {
                 jTextField14.setText(dataEntrega);
-            
-        } catch (SQLException sqle1)
-        {
+            }
+
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }
-    
+
     private void updateProductQuantity(String subtractQuantity, String prodID) {
-        
+
         try {
-            
+
             updateProductsResultSet();
-            
-            String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?" ;
+
+            String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?";
             PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
-            pstmt2.setString(1,subtractQuantity);
+            pstmt2.setString(1, subtractQuantity);
             pstmt2.setString(2, prodID);
             pstmt2.executeUpdate();
-            
+
             // Método para deletar produtos com quantidade 0 (não funciona pois se alguma venda referencia esse produto ele não deixa deletar)
             //Solução:  Apenas ocultar produtos com quantidade 0
             /* 
@@ -1062,15 +1062,14 @@ public class Home extends javax.swing.JPanel {
                     pstmt4.executeUpdate();
                 }
             }
-            */
-            
+             */
             updateProductsResultSet();
-            
+
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }
-    
+
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
@@ -1089,156 +1088,141 @@ public class Home extends javax.swing.JPanel {
 
     /* Registers new sale */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
+
         try {
-            
+
             updateSalesResultSet();
             String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
-            pstmt.setString(1,jTextField20.getText());
-            pstmt.setString(2,jTextField21.getText());
-            pstmt.setString(3,jTextField22.getText());
-            pstmt.setString(4,jTextField23.getText());
- 
+            pstmt.setString(1, jTextField20.getText());
+            pstmt.setString(2, jTextField21.getText());
+            pstmt.setString(3, jTextField22.getText());
+            pstmt.setString(4, jTextField23.getText());
+
             Date currentDate = new Date();
             java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-            pstmt.setDate(5,sqlDate);
-            
-            pstmt.setString(6,"Em processamento");
-            pstmt.setString(7,null);
+            pstmt.setDate(5, sqlDate);
+
+            pstmt.setString(6, "Em processamento");
+            pstmt.setString(7, null);
             pstmt.executeUpdate();
-            
-            /* Updates product quantity */   
+
+            /* Updates product quantity */
             String quantitySold = jTextField22.getText();
-            String prodID = jTextField20.getText(); 
-            updateProductQuantity(quantitySold,prodID);
-            
-            
-            
+            String prodID = jTextField20.getText();
+            updateProductQuantity(quantitySold, prodID);
+
             /* Updates Lists */
             updateProductsLists();
             updateSalesList();
-            
+
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        
+
         try {
-            
-            String query1 = "update vendas set status = ? where venda_ID = ?" ;
+
+            String query1 = "update vendas set status = ? where venda_ID = ?";
             String newStatus = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
-            
+
             PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
-            pstmt.setString(1,newStatus);
+            pstmt.setString(1, newStatus);
             pstmt.setString(2, jTextField25.getText());
             pstmt.executeUpdate();
-            
+
             String entregue = "Entregue";
-            if (newStatus == entregue)
-            {
+            if (newStatus == entregue) {
                 Date currentDate = new Date();
                 java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
 
-                String query2 = "update vendas set data_entrega = ? where venda_ID = ?" ;
+                String query2 = "update vendas set data_entrega = ? where venda_ID = ?";
                 PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
-                pstmt2.setDate(1,sqlDate);
+                pstmt2.setDate(1, sqlDate);
                 pstmt2.setString(2, jTextField25.getText());
                 pstmt2.executeUpdate();
             } else {
-                
-                String query3 = "update vendas set data_entrega = ? where venda_ID = ?" ;
+
+                String query3 = "update vendas set data_entrega = ? where venda_ID = ?";
                 PreparedStatement pstmt3 = mainframe.con.prepareStatement(query3);
-                pstmt3.setDate(1,null);
+                pstmt3.setDate(1, null);
                 pstmt3.setString(2, jTextField25.getText());
                 pstmt3.executeUpdate();
             }
-               
-            
-            
+
             updateSalesList();
-            
-            
+
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField25ActionPerformed
 
-    private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
+    private void qntdProdEstoqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qntdProdEstoqActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField26ActionPerformed
+    }//GEN-LAST:event_qntdProdEstoqActionPerformed
 
-    private void jTextField27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField27ActionPerformed
+    private void qntdVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qntdVendasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField27ActionPerformed
+    }//GEN-LAST:event_qntdVendasActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        
+
         int selectedIndex = jList1.getSelectedIndex() + 1;
 
         try {
-            if (ProductsResultSet.absolute(selectedIndex))
-            {
-                updateProductsFields(); 
+            if (ProductsResultSet.absolute(selectedIndex)) {
+                updateProductsFields();
             }
-        } catch (SQLException sqle1)
-        {
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
-        } 
-        
+        }
+
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             ProductsResultSet.first();
             jList1.setSelectedIndex(0);
-             updateProductsFields(); 
-        } catch (SQLException sqle1)
-        {
+            updateProductsFields();
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       try {
+        try {
             if (ProductsResultSet.next()) {
-                jList1.setSelectedIndex(jList1.getSelectedIndex()+1);
-                updateProductsFields(); 
-            }
-            else 
-            {
+                jList1.setSelectedIndex(jList1.getSelectedIndex() + 1);
+                updateProductsFields();
+            } else {
                 ProductsResultSet.previous();
             }
-        } catch (SQLException sqle1)
-        {
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            if (ProductsResultSet.previous())
-            {
-                jList1.setSelectedIndex(jList1.getSelectedIndex()-1);
-                updateProductsFields(); 
-            }
-            else {
+            if (ProductsResultSet.previous()) {
+                jList1.setSelectedIndex(jList1.getSelectedIndex() - 1);
+                updateProductsFields();
+            } else {
                 ProductsResultSet.next();
             }
-        } catch (SQLException sqle1)
-        {
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1246,10 +1230,9 @@ public class Home extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             ProductsResultSet.last();
-            jList1.setSelectedIndex(jList1.getModel().getSize()-1);
-            updateProductsFields(); 
-        } catch (SQLException sqle1)
-        {
+            jList1.setSelectedIndex(jList1.getModel().getSize() - 1);
+            updateProductsFields();
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1258,14 +1241,12 @@ public class Home extends javax.swing.JPanel {
         int selectedIndex = jList2.getSelectedIndex() + 1;
 
         try {
-            if (SalesResultSet.absolute(selectedIndex))
-            {
+            if (SalesResultSet.absolute(selectedIndex)) {
                 updateSalesFields();
             }
-        } catch (SQLException sqle1)
-        {
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
-        } 
+        }
     }//GEN-LAST:event_jList2ValueChanged
 
     /* Registers new product */
@@ -1273,39 +1254,39 @@ public class Home extends javax.swing.JPanel {
         try {
             String query = "insert into produtos (nome, preco, quantidade) values (?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
-            pstmt.setString(1,jTextField2.getText());
-            pstmt.setString(2,jTextField3.getText());
-            pstmt.setString(3,jTextField4.getText());
+            pstmt.setString(1, jTextField2.getText());
+            pstmt.setString(2, jTextField3.getText());
+            pstmt.setString(3, jTextField4.getText());
             pstmt.executeUpdate();
             updateProductsLists();
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
-            
+
             /* Updates product quantity */
-            
-            if ((jList3.getSelectedIndex()+1) != ProductsResultSet.getRow())
-                ProductsResultSet.absolute(jList3.getSelectedIndex()+1); //Obtains selected list index
-            
+            if ((jList3.getSelectedIndex() + 1) != ProductsResultSet.getRow()) {
+                ProductsResultSet.absolute(jList3.getSelectedIndex() + 1); //Obtains selected list index
+            }
             String quantityRemoved = jTextField42.getText();
             String prodID = ProductsResultSet.getString(1);
-            
+
             updateProductQuantity(quantityRemoved, prodID);
 
             /* Updates current quantity field */
-            if (ProductsResultSet.absolute(jList3.getSelectedIndex()+1)) //Obtains selected list index
+            if (ProductsResultSet.absolute(jList3.getSelectedIndex() + 1)) //Obtains selected list index
+            {
                 jTextField6.setText(ProductsResultSet.getString(4));
-            else
+            } else {
                 jTextField6.setText("0");
-            
-            
+            }
+
             updateProductsLists();
-            
+
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
@@ -1323,23 +1304,53 @@ public class Home extends javax.swing.JPanel {
         int selectedIndex = jList3.getSelectedIndex() + 1;
 
         try {
-            if (ProductsResultSet.absolute(selectedIndex))
-            {
+            if (ProductsResultSet.absolute(selectedIndex)) {
                 jTextField6.setText(ProductsResultSet.getString(4));
             }
-        } catch (SQLException sqle1)
-        {
+        } catch (SQLException sqle1) {
             sqle1.printStackTrace();
-        } 
+        }
     }//GEN-LAST:event_jList3ValueChanged
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
-        System.out.println("Relatório atualizado¹");
+        //Pass database connection to Relatorio
+        Relatorio rel = new Relatorio(this.mainframe.con);
+
+        qntdProdEstoq.setText(rel.updateQntdProdEst());
+        qntdVendas.setText(rel.updateQntdVendas());
+        valorTotalVendas.setText(rel.updateValorTotalVendas());
+        clientesNovos.setText(rel.updateClientesNovos());
+        gastosEntregas.setText(rel.updateGastosEntregas());
+        gastoProdutos.setText(rel.updateGastoProdutos());
+        gastoTotal.setText(rel.updateGastoTotal());
+        lucroTotal.setText(rel.updateLucroTotal());
+
+
     }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void ganhoEstoqueProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ganhoEstoqueProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ganhoEstoqueProdutoActionPerformed
+
+    private void ganhoGastoProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ganhoGastoProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ganhoGastoProdutosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    protected javax.swing.JTextField clientesNovos;
+    protected javax.swing.JTextField ganhoClientesNovos;
+    protected javax.swing.JTextField ganhoEstoqueProduto;
+    protected javax.swing.JTextField ganhoGastoProdutos;
+    protected javax.swing.JTextField ganhoGastosEntregas;
+    protected javax.swing.JTextField ganhoGastosTotais;
+    protected javax.swing.JTextField ganhoLucrosTotais;
+    protected javax.swing.JTextField ganhoQntdVendas;
+    protected javax.swing.JTextField ganhoValorTotal;
+    protected javax.swing.JTextField gastoProdutos;
+    protected javax.swing.JTextField gastoTotal;
+    protected javax.swing.JTextField gastosEntregas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -1416,28 +1427,16 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    protected javax.swing.JTextField lucroTotal;
+    protected javax.swing.JTextField qntdProdEstoq;
+    protected javax.swing.JTextField qntdVendas;
+    protected javax.swing.JTextField valorTotalVendas;
     // End of variables declaration//GEN-END:variables
 }
