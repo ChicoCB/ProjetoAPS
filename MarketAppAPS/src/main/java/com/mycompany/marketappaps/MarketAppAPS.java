@@ -3,6 +3,7 @@
  */
 package com.mycompany.marketappaps;
 
+import java.io.*;
 import java.sql.*;
 
 /**
@@ -11,20 +12,36 @@ import java.sql.*;
  */
 public class MarketAppAPS {
 
-    public static void main(String[] args) {
-        Connection con;
+    private static String db_url;
+    private static String db_pass;
 
-        String url = "jdbc:mysql://localhost/projetoaps";
+    public MarketAppAPS() throws Exception {
+        
+       // URL url = getClass().getResource("DB.txt");
+        File file = new File("src/main/java/com/mycompany/marketappaps/DB.txt");
+        System.out.print(file.getAbsoluteFile());
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String[] url = br.readLine().split("=");
+        String[] pass = br.readLine().split("=");
+
+        MarketAppAPS.db_url = url[1];
+        MarketAppAPS.db_pass = pass[1];
+        
+    }
+
+    public static void main(String[] args)throws Exception {
+        
+        MarketAppAPS marketAppAPS = new MarketAppAPS();
+        Connection con;
+        String url = db_url;
         String user = "root";
-        String password = "fran3828";
+        String password = db_pass;
         try {
             con = DriverManager.getConnection(url, user, password);
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
             con = null;
         }
-
-        System.out.println("Hello World!");
 
         // Define principal window
         MainFrame mfrm = new MainFrame(con);
