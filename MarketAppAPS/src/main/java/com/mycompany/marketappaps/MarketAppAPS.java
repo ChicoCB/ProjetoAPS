@@ -17,9 +17,7 @@ public class MarketAppAPS {
 
     public MarketAppAPS() throws Exception {
         
-       // URL url = getClass().getResource("DB.txt");
         File file = new File("src/main/java/com/mycompany/marketappaps/DB.txt");
-        System.out.print(file.getAbsoluteFile());
         BufferedReader br = new BufferedReader(new FileReader(file));
         String[] url = br.readLine().split("=");
         String[] pass = br.readLine().split("=");
