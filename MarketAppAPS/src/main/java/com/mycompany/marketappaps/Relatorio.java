@@ -46,7 +46,7 @@ public class Relatorio {
     public String updateQntdVendas() {
         try {
             PreparedStatement ptmt = con.prepareStatement(
-                    "select sum(quantidade) as q"
+                    "select count(venda_id) as q"
                     + " from vendas"
             );
 
@@ -64,8 +64,8 @@ public class Relatorio {
 
         try {
             PreparedStatement ptmt = con.prepareStatement(
-                    " select sum(preco) as q"
-                    + "  from produtos join vendas using(prod_id)"
+                    "select sum(valortotalvenda) as q from (select venda_id, sum(preco)*vendas.quantidade as valortotalvenda from produtos join vendas using(prod_id)\n" +
+"group by venda_id) derived"
             );
 
             set = ptmt.executeQuery();
