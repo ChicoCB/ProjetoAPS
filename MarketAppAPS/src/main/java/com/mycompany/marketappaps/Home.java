@@ -25,6 +25,8 @@ public class Home extends javax.swing.JPanel {
     private ResultSet SalesResultSet;
     private ResultSet NonDeliveredSalesResultSet;
     private ResultSet UsersResultSet;
+    private ResultSet ProductsInStockResultSet;
+    
     
     public Home(MainFrame mainframe) {
 
@@ -50,7 +52,7 @@ public class Home extends javax.swing.JPanel {
                     if (!mainframe.login.isSuperUser())
                     {
                         mainframe.home.jPanel6.setEnabled(false); // Disables the tab
-                        JOptionPane.showMessageDialog(null, "Você não tem permissão para cadastrar funcionários.");
+                        JOptionPane.showMessageDialog(null, "Você não tem permissão para gerenciar funcionários.");
                         jTabbedPane1.setSelectedIndex(0);
                     } 
                 }
@@ -1180,6 +1182,19 @@ public class Home extends javax.swing.JPanel {
         }
     }
 
+    private void updateProductsInStockResultSet() {
+        
+        try {
+            PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos where quantidade > 0", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            ProductsInStockResultSet = pstmt.executeQuery();
+
+        } catch (SQLException sqle1) {
+            sqle1.printStackTrace();
+        }
+        
+    }
+    
     private void updateSalesResultSet() {
         try {
             PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -1215,21 +1230,31 @@ public class Home extends javax.swing.JPanel {
     private void updateProductsLists() {
 
         updateProductsResultSet();
-
+        updateProductsInStockResultSet();
+        
         try {
             List<String> lista = new ArrayList<String>();
+            List<String> lista2 = new ArrayList<String>();
             while (ProductsResultSet.next()) {
-                if (ProductsResultSet.getInt("quantidade") > 0) //Hides 0 quantity products
-                {
-                    String nome = ProductsResultSet.getString("nome");
-                    lista.add(nome);
-                }
+                
+                String nome = ProductsResultSet.getString("nome");
+                lista.add(nome);                
             }
+            while (ProductsInStockResultSet.next()) {
+                
+                String nome = ProductsInStockResultSet.getString("nome");
+                lista2.add(nome);
+                
+            }
+            
+            
             DefaultListModel<String> modelo = new DefaultListModel<String>();
             DefaultListModel<String> modelo2 = new DefaultListModel<String>();
 
             for (String nome : lista) {
                 modelo.addElement(nome);
+            }
+            for (String nome : lista2) {
                 modelo2.addElement(nome);
             }
 
@@ -1321,6 +1346,8 @@ public class Home extends javax.swing.JPanel {
 
                 jLabel1.setIcon(new ImageIcon(imagemRedimensionada));
             }
+            else
+                jLabel1.setIcon(null);
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1356,7 +1383,8 @@ public class Home extends javax.swing.JPanel {
         try {
 
             updateProductsResultSet();
-
+            updateProductsInStockResultSet();
+            
             String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?";
             PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
             pstmt2.setString(1, subtractQuantity);
@@ -1382,7 +1410,8 @@ public class Home extends javax.swing.JPanel {
             }
              */
             updateProductsResultSet();
-
+            updateProductsInStockResultSet();
+            
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
@@ -1411,12 +1440,29 @@ public class Home extends javax.swing.JPanel {
 
             updateSalesResultSet();
             updateNonDeliveredSalesResultSet();
+            updateProductsInStockResultSet();
+            
+            String query2 = "select quantidade from produtos where prod_ID = ?";
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
+            String id = jTextField20.getText();
+            String qtd = jTextField22.getText();
+            pstmt2.setString(1, id);
+            ResultSet quantidade = pstmt2.executeQuery();
+            
+            if (quantidade.next())
+                if (quantidade.getInt("quantidade") < Integer.parseInt(qtd))
+                {
+                    JOptionPane.showMessageDialog(null, "Quantidade em estoque do produto insuficiente.");
+                    return;
+                }
             
             String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
-            pstmt.setString(1, jTextField20.getText());
+            
+           
+            pstmt.setString(1, id);
             pstmt.setString(2, jTextField21.getText());
-            pstmt.setString(3, jTextField22.getText());
+            pstmt.setString(3, qtd);
             pstmt.setString(4, jTextField23.getText());
 
             Date currentDate = new Date();
@@ -1607,17 +1653,17 @@ public class Home extends javax.swing.JPanel {
             /* Updates product quantity */
             int selectedIndex = jList3.getSelectedIndex() + 1;
            
-            ProductsResultSet.absolute(selectedIndex); //Obtains selected list index
+            ProductsInStockResultSet.absolute(selectedIndex); //Obtains selected list index
             
             String quantityRemoved = jTextField42.getText();
-            String prodID = ProductsResultSet.getString(1);
+            String prodID = ProductsInStockResultSet.getString(1);
 
             updateProductQuantity(quantityRemoved, prodID);
 
             /* Updates current quantity field */
-            if (ProductsResultSet.absolute(selectedIndex)) //Obtains selected list index
+            if (ProductsInStockResultSet.absolute(selectedIndex)) //Obtains selected list index
             {
-                jTextField6.setText(ProductsResultSet.getString(4));
+                jTextField6.setText(ProductsInStockResultSet.getString(4));
             } else {
                 jTextField6.setText("0");
             }
