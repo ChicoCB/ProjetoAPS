@@ -64,11 +64,17 @@ public class Home extends javax.swing.JPanel {
                     qntdProdEstoq.setText(rel.updateQntdProdEst());
                     qntdVendas.setText(rel.updateQntdVendas());
                     valorTotalVendas.setText(rel.updateValorTotalVendas());
-                    clientesNovos.setText(rel.updateClientesNovos());
                     gastosEntregas.setText(rel.updateGastosEntregas());
                     gastoProdutos.setText(rel.updateGastoProdutos());
                     gastoTotal.setText(rel.updateGastoTotal());
                     lucroTotal.setText(rel.updateLucroTotal());
+                    ganhoEstoqueProduto.setText(rel.updateGanhoProdEst());
+                    ganhoQntdVendas.setText(rel.updateGanhoQntdVendas());
+                    ganhoGastoProdutos.setText(rel.updateGanhoGastoProdutos());
+                    ganhoValorTotal.setText(rel.updateGanhoValorTotalVendas());
+                    ganhoGastosEntregas.setText(rel.updateGanhoGastosEntregas());
+                    ganhoGastosTotais.setText(rel.updateGanhoGastoTotal());
+                    ganhoLucrosTotais.setText(rel.updateGanhoLucroTotal());
                 }
             }
         });
@@ -137,6 +143,8 @@ public class Home extends javax.swing.JPanel {
         jTextField13 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jTextField14 = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        jTextField26 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
@@ -156,12 +164,13 @@ public class Home extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList4 = new javax.swing.JList<>();
+        jLabel47 = new javax.swing.JLabel();
+        jTextField24 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
@@ -169,7 +178,6 @@ public class Home extends javax.swing.JPanel {
         qntdProdEstoq = new javax.swing.JTextField();
         qntdVendas = new javax.swing.JTextField();
         valorTotalVendas = new javax.swing.JTextField();
-        clientesNovos = new javax.swing.JTextField();
         gastosEntregas = new javax.swing.JTextField();
         gastoProdutos = new javax.swing.JTextField();
         gastoTotal = new javax.swing.JTextField();
@@ -179,7 +187,6 @@ public class Home extends javax.swing.JPanel {
         ganhoEstoqueProduto = new javax.swing.JTextField();
         ganhoQntdVendas = new javax.swing.JTextField();
         ganhoValorTotal = new javax.swing.JTextField();
-        ganhoClientesNovos = new javax.swing.JTextField();
         ganhoGastosEntregas = new javax.swing.JTextField();
         ganhoGastoProdutos = new javax.swing.JTextField();
         ganhoGastosTotais = new javax.swing.JTextField();
@@ -549,44 +556,53 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        jLabel48.setText("Custo de entrega:");
+
+        jTextField26.setFocusable(false);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel14))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField7)
+                                .addComponent(jTextField8)
+                                .addComponent(jTextField9)
+                                .addComponent(jTextField10)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField13))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel17)
+                            .addGap(18, 18, 18)
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel14))
+                        .addComponent(jLabel48)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8)
-                            .addComponent(jTextField9)
-                            .addComponent(jTextField10)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField13))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                        .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,9 +638,13 @@ public class Home extends javax.swing.JPanel {
                             .addComponent(jLabel16)
                             .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel48)
+                            .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Vendas Registradas", jPanel3);
@@ -640,6 +660,12 @@ public class Home extends javax.swing.JPanel {
 
         jLabel26.setText("ID do cliente:");
         jLabel26.setFocusable(false);
+
+        jTextField23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField23ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Registrar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -684,6 +710,9 @@ public class Home extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(jList4);
 
+        jLabel47.setText("Custo de entrega:");
+        jLabel47.setFocusable(false);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -692,17 +721,26 @@ public class Home extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap(245, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel26))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField20)
-                            .addComponent(jTextField21)
-                            .addComponent(jTextField22)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addGap(33, 33, 33)
+                                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel47)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField24, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel23)
+                                        .addComponent(jLabel24)
+                                        .addComponent(jLabel25))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField20, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                                        .addComponent(jTextField21)
+                                        .addComponent(jTextField22)))))
                         .addGap(97, 97, 97)
                         .addComponent(jButton7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -715,26 +753,27 @@ public class Home extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel31)
-                                    .addComponent(jLabel30))
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel31)
+                                            .addComponent(jLabel30))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jLabel29))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 419, Short.MAX_VALUE)
                                 .addComponent(jButton8)))))
                 .addContainerGap(177, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(470, 470, 470)
-                .addComponent(jLabel29)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -749,15 +788,19 @@ public class Home extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(11, 11, 11)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jLabel29)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel29)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel30))
@@ -766,12 +809,11 @@ public class Home extends javax.swing.JPanel {
                         .addGap(4, 4, 4)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(29, Short.MAX_VALUE))))
+                            .addComponent(jLabel31)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Gerenciar Vendas", jPanel4);
@@ -787,9 +829,6 @@ public class Home extends javax.swing.JPanel {
 
         jLabel34.setText("Valor total das vendas:");
         jLabel34.setFocusable(false);
-
-        jLabel36.setText("Clientes novos registrados:");
-        jLabel36.setFocusable(false);
 
         jLabel37.setText("Gastos totais:");
         jLabel37.setFocusable(false);
@@ -819,8 +858,6 @@ public class Home extends javax.swing.JPanel {
 
         valorTotalVendas.setFocusable(false);
 
-        clientesNovos.setFocusable(false);
-
         gastosEntregas.setFocusable(false);
 
         gastoProdutos.setFocusable(false);
@@ -845,8 +882,6 @@ public class Home extends javax.swing.JPanel {
         ganhoQntdVendas.setFocusable(false);
 
         ganhoValorTotal.setFocusable(false);
-
-        ganhoClientesNovos.setFocusable(false);
 
         ganhoGastosEntregas.setFocusable(false);
 
@@ -873,12 +908,11 @@ public class Home extends javax.swing.JPanel {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel33)
                     .addComponent(jLabel35)
                     .addComponent(jLabel34)
-                    .addComponent(jLabel36)
                     .addComponent(jLabel39)
                     .addComponent(jLabel40)
                     .addComponent(jLabel37)
@@ -888,7 +922,6 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(qntdProdEstoq)
                     .addComponent(qntdVendas)
                     .addComponent(valorTotalVendas)
-                    .addComponent(clientesNovos)
                     .addComponent(gastosEntregas)
                     .addComponent(gastoProdutos)
                     .addComponent(gastoTotal)
@@ -898,12 +931,11 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(ganhoQntdVendas)
                     .addComponent(ganhoValorTotal)
-                    .addComponent(ganhoClientesNovos)
                     .addComponent(ganhoGastosEntregas)
                     .addComponent(ganhoGastoProdutos)
                     .addComponent(ganhoGastosTotais)
                     .addComponent(ganhoLucrosTotais))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel41)
@@ -922,7 +954,7 @@ public class Home extends javax.swing.JPanel {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -945,11 +977,6 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(ganhoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(clientesNovos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoClientesNovos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(gastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ganhoGastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -968,7 +995,7 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(jLabel38)
                     .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(76, 76, 76)
                 .addComponent(jButton10)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
@@ -1197,7 +1224,7 @@ public class Home extends javax.swing.JPanel {
     
     private void updateSalesResultSet() {
         try {
-            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID)", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID) order by venda_ID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             SalesResultSet = pstmt2.executeQuery();
 
         } catch (SQLException sqle1) {
@@ -1207,7 +1234,7 @@ public class Home extends javax.swing.JPanel {
     
     private void updateNonDeliveredSalesResultSet() {
         try {
-            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID) where status != \"Entregue\"", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID) where status != \"Entregue\" order by venda_ID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             NonDeliveredSalesResultSet = pstmt2.executeQuery();
 
         } catch (SQLException sqle1) {
@@ -1371,7 +1398,8 @@ public class Home extends javax.swing.JPanel {
             } else {
                 jTextField14.setText(dataEntrega);
             }
-
+            jTextField26.setText(SalesResultSet.getString("custo_entrega"));
+            
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
@@ -1456,7 +1484,7 @@ public class Home extends javax.swing.JPanel {
                     return;
                 }
             
-            String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega) values (?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega,custo_entrega) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
             
            
@@ -1471,6 +1499,7 @@ public class Home extends javax.swing.JPanel {
 
             pstmt.setString(6, "Em processamento");
             pstmt.setString(7, null);
+            pstmt.setString(8,jTextField24.getText());
             pstmt.executeUpdate();
 
             /* Updates product quantity */
@@ -1860,12 +1889,14 @@ public class Home extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField23ActionPerformed
+
     
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JTextField clientesNovos;
-    protected javax.swing.JTextField ganhoClientesNovos;
     protected javax.swing.JTextField ganhoEstoqueProduto;
     protected javax.swing.JTextField ganhoGastoProdutos;
     protected javax.swing.JTextField ganhoGastosEntregas;
@@ -1920,7 +1951,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -1932,6 +1962,8 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1970,7 +2002,9 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
+    private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField42;
