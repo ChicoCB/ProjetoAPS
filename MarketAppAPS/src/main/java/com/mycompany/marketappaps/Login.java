@@ -5,6 +5,7 @@
 package com.mycompany.marketappaps;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -155,6 +156,11 @@ public class Login extends javax.swing.JPanel {
             mainframe.setSize(1024, 768);
             mainframe.setLocation(400, 150);
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Credenciais incorretas.");
+        }
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public boolean isSuperUser()

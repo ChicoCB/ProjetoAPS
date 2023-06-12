@@ -1,2 +1,2 @@
 URL=jdbc:mysql://localhost/projetoaps
-PASS=Henrique312
+PASS=fran3828
