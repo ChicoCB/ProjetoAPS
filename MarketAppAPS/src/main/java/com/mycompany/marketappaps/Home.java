@@ -1627,8 +1627,16 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_qntdVendasActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-        if (!new Relatorio(mainframe.con).generateRelatorio()) {
+        
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(jButton10);
+        File newFile = null;
+        if (result == JFileChooser.APPROVE_OPTION) {
+            newFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + newFile.getAbsolutePath());
+        }
+              
+        if (!new Relatorio(mainframe.con).generateRelatorio(newFile.getAbsolutePath())) {
             jTextField27.setText("Falha em gerar PDF");
         } else {
             jTextField27.setText("PDF gerado com sucesso");

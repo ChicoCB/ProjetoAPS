@@ -432,18 +432,14 @@ public class Relatorio {
         return "error";
     }
 
-    public  boolean generateRelatorio() {
+    public  boolean generateRelatorio(String filePath) {
         try {
-
-            File new_dir = new File("Relatorio");
-
-            if (!new_dir.exists()) {
-                new_dir.mkdir();
-            }
-
-            String path_to_relatorio = new_dir.getAbsolutePath();
-            String file_name = path_to_relatorio + "/ Relatorio.pdf";
-            PdfDocument pdf = new PdfDocument(new PdfWriter(file_name));
+            
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                    filePath += ".pdf";
+                }
+            
+            PdfDocument pdf = new PdfDocument(new PdfWriter(filePath));
             Document document = new Document(pdf);
 
             float columnWidth[] = {200f, 100f, 100f};
