@@ -59,7 +59,10 @@ public class Home extends javax.swing.JPanel {
                 }
                 if (selectedIndex == 4) {
                     //Pass database connection to Relatorio
-                    Relatorio rel = new Relatorio(mainframe.con);
+                    
+                    int previousMonth = jComboBox3.getSelectedIndex() + 1;
+                    
+                    Relatorio rel = new Relatorio(mainframe.con,previousMonth);
 
                     qntdProdEstoq.setText(rel.updateQntdProdEst());
                     qntdVendas.setText(rel.updateQntdVendas());
@@ -197,6 +200,7 @@ public class Home extends javax.swing.JPanel {
         ganhoLucrosTotais = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jTextField27 = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -901,7 +905,8 @@ public class Home extends javax.swing.JPanel {
         jLabel41.setText("Dados");
         jLabel41.setFocusable(false);
 
-        jLabel42.setText("Ganho em relação ao mês anterior");
+        jLabel42.setText("Ganho em relação ao mês:");
+        jLabel42.setToolTipText("");
         jLabel42.setFocusable(false);
 
         ganhoEstoqueProduto.setFocusable(false);
@@ -941,22 +946,32 @@ public class Home extends javax.swing.JPanel {
         jTextField27.setBorder(null);
         jTextField27.setFocusable(false);
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        jComboBox3.setToolTipText("");
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(449, Short.MAX_VALUE)
                 .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(259, 259, 259)
                 .addComponent(jLabel42)
-                .addGap(198, 198, 198))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(227, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(468, 468, 468))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel33)
                     .addComponent(jLabel35)
@@ -983,7 +998,7 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(ganhoGastoProdutos)
                     .addComponent(ganhoGastosTotais)
                     .addComponent(ganhoLucrosTotais))
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton10)
@@ -994,12 +1009,13 @@ public class Home extends javax.swing.JPanel {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLabel32)
-                .addGap(37, 37, 37)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
-                    .addComponent(jLabel42))
+                    .addComponent(jLabel42)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
@@ -1039,7 +1055,7 @@ public class Home extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Relatório", jPanel5);
@@ -1636,7 +1652,9 @@ public class Home extends javax.swing.JPanel {
             System.out.println("Selected file: " + newFile.getAbsolutePath());
         }
               
-        if (!new Relatorio(mainframe.con).generateRelatorio(newFile.getAbsolutePath())) {
+        int previousMonth = jComboBox3.getSelectedIndex() + 1;
+        
+        if (!new Relatorio(mainframe.con,previousMonth).generateRelatorio(newFile.getAbsolutePath())) {
             jTextField27.setText("Falha em gerar PDF");
         } else {
             jTextField27.setText("PDF gerado com sucesso");
@@ -1983,6 +2001,29 @@ public class Home extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        int previousMonth = jComboBox3.getSelectedIndex() + 1;
+                    
+        Relatorio rel = new Relatorio(mainframe.con,previousMonth);
+
+        qntdProdEstoq.setText(rel.updateQntdProdEst());
+        qntdVendas.setText(rel.updateQntdVendas());
+        valorTotalVendas.setText(rel.updateValorTotalVendas());
+        gastosEntregas.setText(rel.updateGastosEntregas());
+        gastoProdutos.setText(rel.updateGastoProdutos());
+        gastoTotal.setText(rel.updateGastoTotal());
+        lucroTotal.setText(rel.updateLucroTotal());
+        ganhoEstoqueProduto.setText(rel.updateGanhoProdEst());
+        ganhoQntdVendas.setText(rel.updateGanhoQntdVendas());
+        ganhoGastoProdutos.setText(rel.updateGanhoGastoProdutos());
+        ganhoValorTotal.setText(rel.updateGanhoValorTotalVendas());
+        ganhoGastosEntregas.setText(rel.updateGanhoGastosEntregas());
+        ganhoGastosTotais.setText(rel.updateGanhoGastoTotal());
+        ganhoLucrosTotais.setText(rel.updateGanhoLucroTotal());
+                
+        
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JTextField ganhoEstoqueProduto;
@@ -2011,6 +2052,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

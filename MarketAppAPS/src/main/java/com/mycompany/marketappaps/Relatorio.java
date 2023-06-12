@@ -27,12 +27,12 @@ public class Relatorio {
     private ResultSet set;
     private final Connection con;
 
-    public Relatorio(Connection con) {
+    public Relatorio(Connection con, int previousMonth) {
         //Salva a data atual
         this.set = null;
         this.con = con;
         this.date = LocalDate.now();
-        previousMonth = date.minusMonths(1).getMonth().getValue();
+        this.previousMonth = previousMonth;
         currentMonth = date.getMonth().getValue();
         currentYear = date.getYear();
     }
@@ -64,17 +64,28 @@ public class Relatorio {
                     + "FROM\n"
                     + "    produtos\n"
                     + "WHERE\n"
-                    + "    MONTH(data_cadastramento) = ?\n"
-                    + "        AND YEAR(data_cadastramento) = ?");
+                    + "    MONTH(data_cadastramento) <= ?\n"
+                    + "        AND YEAR(data_cadastramento) <= ?");
 
             ptmt.setInt(1, previousMonth);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
             set.next();
 
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float mesAnterior = Float.parseFloat(set.getString("q"));
             float mesAtual = Float.parseFloat(updateQntdProdEst());
 
+            if (mesAnterior == 0)
+                return "Sem dados.";
+                
             return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
         } catch (SQLException err) {
@@ -116,9 +127,20 @@ public class Relatorio {
             set = ptmt.executeQuery();
             set.next();
 
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float mesAnterior = Float.parseFloat(set.getString("q"));
             float mesAtual = Float.parseFloat(updateQntdVendas());
 
+            if (mesAnterior == 0)
+                return "Sem dados.";
+            
             return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
         } catch (SQLException err) {
@@ -177,9 +199,20 @@ public class Relatorio {
             set = ptmt.executeQuery();
             set.next();
 
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float mesAnterior = Float.parseFloat(set.getString("q"));
             float mesAtual = Float.parseFloat(updateValorTotalVendas());
 
+            if (mesAnterior == 0)
+                return "Sem dados.";
+            
             return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
         } catch (SQLException err) {
@@ -226,9 +259,20 @@ public class Relatorio {
             set = ptmt.executeQuery();
             set.next();
 
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float mesAnterior = Float.parseFloat(set.getString("q"));
             float mesAtual = Float.parseFloat(updateGastosEntregas());
 
+            if (mesAnterior == 0)
+                return "Sem dados.";
+            
             return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
         } catch (SQLException sqle1) {
@@ -289,9 +333,20 @@ public class Relatorio {
             set = ptmt.executeQuery();
             set.next();
 
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float mesAnterior = Float.parseFloat(set.getString("q"));
             float mesAtual = Float.parseFloat(updateGastoProdutos());
 
+            if (mesAnterior == 0)
+                return "Sem dados.";
+            
             return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
         } catch (SQLException sqle1) {
@@ -335,6 +390,14 @@ public class Relatorio {
             set = ptmt.executeQuery();
             set.next();
 
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float gasto1Anterior = Float.parseFloat(set.getString("q"));
 
             PreparedStatement ptmt2 = con.prepareStatement(
@@ -346,9 +409,21 @@ public class Relatorio {
             ptmt2.setInt(2, currentYear);
             set = ptmt2.executeQuery();
             set.next();
+            
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg2 = set.getString("q");
+            
+            if (stg2 == null)
+                return "Sem dados.";
+            
             float gasto2Anterior = Float.parseFloat(set.getString("q"));
             float gastoTotAnterior = gasto1Anterior + gasto2Anterior;
 
+            if (gastoTotAnterior == 0)
+                return "Sem dados.";
+            
             return String.valueOf(((gastoTotAtual - gastoTotAnterior) / gastoTotAnterior) * 100) + " %";
 
         } catch (SQLException sqle1) {
@@ -388,6 +463,15 @@ public class Relatorio {
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
             set.next();
+            
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float gasto1Anterior = Float.parseFloat(set.getString("q"));
 
             PreparedStatement ptmt2 = con.prepareStatement(
@@ -399,6 +483,15 @@ public class Relatorio {
             ptmt2.setInt(2, currentYear);
             set = ptmt2.executeQuery();
             set.next();
+            
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg2 = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float gasto2Anterior = Float.parseFloat(set.getString("q"));
             float gastoTotAnterior = gasto1Anterior + gasto2Anterior;
 
@@ -419,10 +512,22 @@ public class Relatorio {
             ptmt3.setInt(2, currentYear);
             set = ptmt3.executeQuery();
             set.next();
+            
+            if (set == null)
+                return "Sem dados.";
+            
+            String stg3 = set.getString("q");
+            
+            if (stg == null)
+                return "Sem dados.";
+            
             float ganhoAnterior = Float.parseFloat(set.getString("q"));
 
             float lucroAnterior = ganhoAnterior - gastoTotAnterior;
 
+            if (lucroAnterior == 0)
+                return "Sem dados.";
+            
             return String.valueOf(((lucroAtual - lucroAnterior) / lucroAnterior) * 100) + " %";
 
         } catch (SQLException sqle1) {
@@ -449,7 +554,7 @@ public class Relatorio {
 
             table.addHeaderCell("");
             table.addHeaderCell("Dados");
-            table.addHeaderCell("Ganho em Relação ao mês anterior");
+            table.addHeaderCell("Ganho em Relação ao mês " + String.valueOf(previousMonth));
 
             table.addCell("Quantidade de produtos em estoque:");
             table.addCell(this.updateQntdProdEst());
