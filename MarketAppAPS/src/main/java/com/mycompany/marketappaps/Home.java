@@ -15,6 +15,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 /**
  * @author luis
  */
@@ -26,39 +27,35 @@ public class Home extends javax.swing.JPanel {
     private ResultSet NonDeliveredSalesResultSet;
     private ResultSet UsersResultSet;
     private ResultSet ProductsInStockResultSet;
-    
-    
+
     public Home(MainFrame mainframe) {
 
         initComponents();
-            
+
         this.mainframe = mainframe;
         ProductsResultSet = null;
         SalesResultSet = null;
         UsersResultSet = null;
-        
+
         updateProductsLists();
         updateSalesLists();
         updateUsersList();
-        
+
         /* Event Listener para quando muda de tab */
         jTabbedPane1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 int selectedIndex = jTabbedPane1.getSelectedIndex();
                 // Perform actions based on the selected tab index
-                if (selectedIndex == 5)
-                {
-                    if (!mainframe.login.isSuperUser())
-                    {
+                if (selectedIndex == 5) {
+                    if (!mainframe.login.isSuperUser()) {
                         mainframe.home.jPanel6.setEnabled(false); // Disables the tab
                         JOptionPane.showMessageDialog(null, "Você não tem permissão para gerenciar funcionários.");
                         jTabbedPane1.setSelectedIndex(0);
-                    } 
+                    }
                 }
-                if (selectedIndex == 4)
-                {
-                     //Pass database connection to Relatorio
+                if (selectedIndex == 4) {
+                    //Pass database connection to Relatorio
                     Relatorio rel = new Relatorio(mainframe.con);
 
                     qntdProdEstoq.setText(rel.updateQntdProdEst());
@@ -78,7 +75,7 @@ public class Home extends javax.swing.JPanel {
                 }
             }
         });
-        
+
     }
 
     /**
@@ -192,6 +189,7 @@ public class Home extends javax.swing.JPanel {
         ganhoGastosTotais = new javax.swing.JTextField();
         ganhoLucrosTotais = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
+        jTextField27 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -903,39 +901,15 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        jTextField27.setBackground(java.awt.SystemColor.window);
+        jTextField27.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField27.setBorder(null);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel34)
-                    .addComponent(jLabel39)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel38))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(qntdProdEstoq)
-                    .addComponent(qntdVendas)
-                    .addComponent(valorTotalVendas)
-                    .addComponent(gastosEntregas)
-                    .addComponent(gastoProdutos)
-                    .addComponent(gastoTotal)
-                    .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(154, 154, 154)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(ganhoQntdVendas)
-                    .addComponent(ganhoValorTotal)
-                    .addComponent(ganhoGastosEntregas)
-                    .addComponent(ganhoGastoProdutos)
-                    .addComponent(ganhoGastosTotais)
-                    .addComponent(ganhoLucrosTotais))
-                .addContainerGap(250, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel41)
@@ -946,15 +920,49 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(468, 468, 468))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton10)
-                .addGap(448, 448, 448))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(222, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel38))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(qntdProdEstoq)
+                            .addComponent(qntdVendas)
+                            .addComponent(valorTotalVendas)
+                            .addComponent(gastosEntregas)
+                            .addComponent(gastoProdutos)
+                            .addComponent(gastoTotal)
+                            .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(154, 154, 154))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton10)
+                        .addGap(94, 94, 94)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(ganhoQntdVendas)
+                        .addComponent(ganhoValorTotal)
+                        .addComponent(ganhoGastosEntregas)
+                        .addComponent(ganhoGastoProdutos)
+                        .addComponent(ganhoGastosTotais)
+                        .addComponent(ganhoLucrosTotais)))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -996,8 +1004,10 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
-                .addComponent(jButton10)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Relatório", jPanel5);
@@ -1197,7 +1207,6 @@ public class Home extends javax.swing.JPanel {
         jTabbedPane1.getAccessibleContext().setAccessibleName("tab3");
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void updateProductsResultSet() {
         try {
             PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -1210,7 +1219,7 @@ public class Home extends javax.swing.JPanel {
     }
 
     private void updateProductsInStockResultSet() {
-        
+
         try {
             PreparedStatement pstmt = mainframe.con.prepareStatement("select * from produtos where quantidade > 0", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
@@ -1219,9 +1228,9 @@ public class Home extends javax.swing.JPanel {
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }
-    
+
     private void updateSalesResultSet() {
         try {
             PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID) order by venda_ID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -1231,7 +1240,7 @@ public class Home extends javax.swing.JPanel {
             sqle1.printStackTrace();
         }
     }
-    
+
     private void updateNonDeliveredSalesResultSet() {
         try {
             PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from vendas join clientes using(client_ID) join enderecos using(client_ID) where status != \"Entregue\" order by venda_ID", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -1241,9 +1250,9 @@ public class Home extends javax.swing.JPanel {
             sqle1.printStackTrace();
         }
     }
-    
+
     private void updateUsersResultSet() {
-        
+
         try {
             PreparedStatement pstmt2 = mainframe.con.prepareStatement("select * from users", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             UsersResultSet = pstmt2.executeQuery();
@@ -1251,30 +1260,29 @@ public class Home extends javax.swing.JPanel {
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }
 
     private void updateProductsLists() {
 
         updateProductsResultSet();
         updateProductsInStockResultSet();
-        
+
         try {
             List<String> lista = new ArrayList<String>();
             List<String> lista2 = new ArrayList<String>();
             while (ProductsResultSet.next()) {
-                
+
                 String nome = ProductsResultSet.getString("nome");
-                lista.add(nome);                
+                lista.add(nome);
             }
             while (ProductsInStockResultSet.next()) {
-                
+
                 String nome = ProductsInStockResultSet.getString("nome");
                 lista2.add(nome);
-                
+
             }
-            
-            
+
             DefaultListModel<String> modelo = new DefaultListModel<String>();
             DefaultListModel<String> modelo2 = new DefaultListModel<String>();
 
@@ -1297,26 +1305,27 @@ public class Home extends javax.swing.JPanel {
 
         updateSalesResultSet();
         updateNonDeliveredSalesResultSet();
-        
+
         try {
             List<String> lista2 = new ArrayList<String>();
             List<String> listaNaoEntregues = new ArrayList<String>();
             while (SalesResultSet.next()) {
                 String venda_ID = SalesResultSet.getString("venda_ID");
                 lista2.add(venda_ID);
-                
+
                 String entregue = "Entregue";
                 String statusAtual = SalesResultSet.getString("status");
-                if (!statusAtual.equals(entregue))
+                if (!statusAtual.equals(entregue)) {
                     listaNaoEntregues.add(venda_ID);
+                }
             }
             DefaultListModel<String> modelo2 = new DefaultListModel<String>();
             DefaultListModel<String> modeloNaoEntregues = new DefaultListModel<String>();
-            
+
             for (String venda_ID : lista2) {
-                modelo2.addElement(venda_ID); 
+                modelo2.addElement(venda_ID);
             }
-            
+
             for (String venda_ID : listaNaoEntregues) {
                 modeloNaoEntregues.addElement(venda_ID);
             }
@@ -1328,19 +1337,19 @@ public class Home extends javax.swing.JPanel {
             sqle1.printStackTrace();
         }
     }
-    
+
     void updateUsersList() {
-        
+
         updateUsersResultSet();
 
         try {
             List<String> lista = new ArrayList<String>();
             while (UsersResultSet.next()) {
-                
+
                 String nome = UsersResultSet.getString("nome");
-                lista.add(nome);  
+                lista.add(nome);
             }
-            
+
             DefaultListModel<String> modelo = new DefaultListModel<String>();
 
             for (String nome : lista) {
@@ -1352,9 +1361,9 @@ public class Home extends javax.swing.JPanel {
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
-        
+
     }
-    
+
     private void updateProductsFields() {
 
         try {
@@ -1372,9 +1381,9 @@ public class Home extends javax.swing.JPanel {
                 Image imagemRedimensionada = im.getScaledInstance(larguraJLabel, alturaJLabel, im.SCALE_SMOOTH);
 
                 jLabel1.setIcon(new ImageIcon(imagemRedimensionada));
-            }
-            else
+            } else {
                 jLabel1.setIcon(null);
+            }
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1399,7 +1408,7 @@ public class Home extends javax.swing.JPanel {
                 jTextField14.setText(dataEntrega);
             }
             jTextField26.setText(SalesResultSet.getString("custo_entrega"));
-            
+
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
@@ -1412,7 +1421,7 @@ public class Home extends javax.swing.JPanel {
 
             updateProductsResultSet();
             updateProductsInStockResultSet();
-            
+
             String query2 = "update produtos set quantidade = quantidade - ? where prod_ID = ?";
             PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
             pstmt2.setString(1, subtractQuantity);
@@ -1439,7 +1448,7 @@ public class Home extends javax.swing.JPanel {
              */
             updateProductsResultSet();
             updateProductsInStockResultSet();
-            
+
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
@@ -1469,25 +1478,24 @@ public class Home extends javax.swing.JPanel {
             updateSalesResultSet();
             updateNonDeliveredSalesResultSet();
             updateProductsInStockResultSet();
-            
+
             String query2 = "select quantidade from produtos where prod_ID = ?";
             PreparedStatement pstmt2 = mainframe.con.prepareStatement(query2);
             String id = jTextField20.getText();
             String qtd = jTextField22.getText();
             pstmt2.setString(1, id);
             ResultSet quantidade = pstmt2.executeQuery();
-            
-            if (quantidade.next())
-                if (quantidade.getInt("quantidade") < Integer.parseInt(qtd))
-                {
+
+            if (quantidade.next()) {
+                if (quantidade.getInt("quantidade") < Integer.parseInt(qtd)) {
                     JOptionPane.showMessageDialog(null, "Quantidade em estoque do produto insuficiente.");
                     return;
                 }
-            
+            }
+
             String query = "insert into vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega,custo_entrega) values (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
-            
-           
+
             pstmt.setString(1, id);
             pstmt.setString(2, jTextField21.getText());
             pstmt.setString(3, qtd);
@@ -1499,7 +1507,7 @@ public class Home extends javax.swing.JPanel {
 
             pstmt.setString(6, "Em processamento");
             pstmt.setString(7, null);
-            pstmt.setString(8,jTextField24.getText());
+            pstmt.setString(8, jTextField24.getText());
             pstmt.executeUpdate();
 
             /* Updates product quantity */
@@ -1517,7 +1525,6 @@ public class Home extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    
     /* Updates Sale Status */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
@@ -1525,12 +1532,12 @@ public class Home extends javax.swing.JPanel {
 
             String query1 = "update vendas set status = ? where venda_ID = ?";
             String newStatus = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
-            
+
             int selectedIndex = jList4.getSelectedIndex() + 1;
             NonDeliveredSalesResultSet.absolute(selectedIndex); //Obtains selected list index
-            
+
             String ID = NonDeliveredSalesResultSet.getString("venda_ID");
-            
+
             PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
             pstmt.setString(1, newStatus);
             pstmt.setString(2, ID);
@@ -1554,17 +1561,20 @@ public class Home extends javax.swing.JPanel {
                 pstmt3.setString(2, ID);
                 pstmt3.executeUpdate();
             }
-            
+
             updateSalesLists();
-            
+
             /* Updates current status field */
             if (NonDeliveredSalesResultSet.absolute(selectedIndex)) //Obtains selected list index
+            {
                 jTextField25.setText(NonDeliveredSalesResultSet.getString("status"));
+            }
 
-            if (newStatus == entregue)
+            if (newStatus == entregue) {
                 jList4.setSelectedIndex(selectedIndex - 2); //Atualiza seleção
-            else
+            } else {
                 jList4.setSelectedIndex(selectedIndex - 1);
+            }
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
@@ -1586,6 +1596,13 @@ public class Home extends javax.swing.JPanel {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        if (!new Relatorio(mainframe.con).generateRelatorio()) {
+            jTextField27.setText("Falha em gerar PDF");
+        } else {
+            jTextField27.setText("PDF gerado com sucesso");
+        }
+
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
@@ -1681,9 +1698,9 @@ public class Home extends javax.swing.JPanel {
 
             /* Updates product quantity */
             int selectedIndex = jList3.getSelectedIndex() + 1;
-           
+
             ProductsInStockResultSet.absolute(selectedIndex); //Obtains selected list index
-            
+
             String quantityRemoved = jTextField42.getText();
             String prodID = ProductsInStockResultSet.getString(1);
 
@@ -1698,7 +1715,7 @@ public class Home extends javax.swing.JPanel {
             }
 
             updateProductsLists();
-            
+
             jList3.setSelectedIndex(selectedIndex - 1);
 
         } catch (SQLException sqle1) {
@@ -1728,8 +1745,8 @@ public class Home extends javax.swing.JPanel {
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
-       
-        
+
+
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void ganhoEstoqueProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ganhoEstoqueProdutoActionPerformed
@@ -1741,12 +1758,12 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_ganhoGastoProdutosActionPerformed
 
     private void jList4ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList4ValueChanged
-         int selectedIndex = jList4.getSelectedIndex() + 1;
-         
+        int selectedIndex = jList4.getSelectedIndex() + 1;
+
         try {
             PreparedStatement pstmt = mainframe.con.prepareStatement("select status from vendas join clientes using(client_ID) join enderecos using(client_ID) where status != \"Entregue\"", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet naoEntregues = pstmt.executeQuery();
-            
+
             if (naoEntregues.absolute(selectedIndex)) {
                 jTextField25.setText(naoEntregues.getString("status"));
             }
@@ -1768,18 +1785,19 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_jPanel6FocusGained
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        
+
         try {
             String query = "insert into users (nome, senha, super_user) values (?, ?, ?)";
             PreparedStatement pstmt = mainframe.con.prepareStatement(query);
             pstmt.setString(1, jTextField1.getText());
             pstmt.setString(2, jTextField5.getText());
-            
-            if (jCheckBox1.isSelected())
+
+            if (jCheckBox1.isSelected()) {
                 pstmt.setBoolean(3, true);
-            else
+            } else {
                 pstmt.setBoolean(3, false);
-            
+            }
+
             pstmt.executeUpdate();
             updateUsersList();
         } catch (SQLException sqle1) {
@@ -1796,23 +1814,20 @@ public class Home extends javax.swing.JPanel {
 
             /* Updates permission field */
             int selectedIndex = jList5.getSelectedIndex() + 1;
-           
+
             UsersResultSet.absolute(selectedIndex); //Obtains selected list index
 
             /* Updates current permission field */
             if (UsersResultSet.absolute(selectedIndex)) //Obtains selected list index
             {
-                if (UsersResultSet.getString("super_user").equals("1"))
-                {
+                if (UsersResultSet.getString("super_user").equals("1")) {
                     jTextField19.setText("Super User");
-                }
-                else
-                {
+                } else {
                     jTextField19.setText("User");
                 }
-                
+
             } else {
-                jList5.setSelectedIndex(selectedIndex-1);
+                jList5.setSelectedIndex(selectedIndex - 1);
             }
 
         } catch (SQLException sqle1) {
@@ -1821,40 +1836,38 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_jList5ValueChanged
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-         try {
+        try {
 
             String query1 = "update users set super_user = ? where user_ID = ?";
             String newPermission = jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
             boolean newPerm;
-            if (newPermission.equals("Super User"))
+            if (newPermission.equals("Super User")) {
                 newPerm = true;
-            else
+            } else {
                 newPerm = false;
-            
+            }
+
             int selectedIndex = jList5.getSelectedIndex() + 1;
             UsersResultSet.absolute(selectedIndex); //Obtains selected list index
-            
+
             String ID = UsersResultSet.getString("user_ID");
-            
+
             PreparedStatement pstmt = mainframe.con.prepareStatement(query1);
             pstmt.setBoolean(1, newPerm);
             pstmt.setString(2, ID);
             pstmt.executeUpdate();
-            
+
             updateUsersList();
-            
-             /* Updates current permission field */
+
+            /* Updates current permission field */
             if (UsersResultSet.absolute(selectedIndex)) //Obtains selected list index
             {
-                if (UsersResultSet.getString("super_user").equals("1"))
-                {
+                if (UsersResultSet.getString("super_user").equals("1")) {
                     jTextField19.setText("Super User");
-                }
-                else
-                {
+                } else {
                     jTextField19.setText("User");
                 }
-                
+
             } else {
                 jTextField19.setText("Removido");
             }
@@ -1867,21 +1880,21 @@ public class Home extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-         try {
+        try {
 
             int selectedIndex = jList5.getSelectedIndex() + 1;
-           
+
             UsersResultSet.absolute(selectedIndex); //Obtains selected list index
-            
+
             String userID = UsersResultSet.getString(1);
 
             String query3 = "delete from users where user_ID = ?";
             PreparedStatement pstmt4 = mainframe.con.prepareStatement(query3);
-            pstmt4.setString(1,userID);
+            pstmt4.setString(1, userID);
             pstmt4.executeUpdate();
 
             updateUsersList();
-            
+
             jList5.setSelectedIndex(selectedIndex - 2);
 
         } catch (SQLException sqle1) {
@@ -1893,9 +1906,7 @@ public class Home extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField23ActionPerformed
 
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JTextField ganhoEstoqueProduto;
     protected javax.swing.JTextField ganhoGastoProdutos;
@@ -2005,6 +2016,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
+    private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField42;
