@@ -17,6 +17,7 @@ create table produtos (
     nome varchar(40),
     preco varchar(20),
 	quantidade varchar(10),
+    preco_venda varchar(20),
     data_cadastramento date default null,
     imagem MEDIUMBLOB default null,
     primary key (prod_ID)

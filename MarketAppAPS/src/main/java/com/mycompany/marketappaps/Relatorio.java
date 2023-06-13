@@ -149,15 +149,15 @@ public class Relatorio {
         return "error";
     }
 
-    public String updateValorTotalVendas() {
-
+    public String valorTotalVendasMes(int mes) {
+        
         try {
             PreparedStatement ptmt = con.prepareStatement(
                     "SELECT \n"
                     + "    SUM(valortotalvenda) AS q\n"
                     + "FROM\n"
                     + "    (SELECT \n"
-                    + "        venda_id, SUM(preco) * vendas.quantidade AS valortotalvenda\n"
+                    + "        venda_id, preco_venda * vendas.quantidade AS valortotalvenda\n"
                     + "    FROM\n"
                     + "        produtos\n"
                     + "    JOIN vendas USING (prod_id)\n"
@@ -165,7 +165,7 @@ public class Relatorio {
                     + "    GROUP BY venda_id) derived"
             );
 
-            ptmt.setInt(1, currentMonth);
+            ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
             set.next();
@@ -176,50 +176,32 @@ public class Relatorio {
         }
 
         return "error";
+        
+    }
+    
+    public String updateValorTotalVendas() {
+
+        
+        String total = valorTotalVendasMes(currentMonth);
+        return total;
+             
     }
 
     public String updateGanhoValorTotalVendas() {
-
-        try {
-            PreparedStatement ptmt = con.prepareStatement(
-                    "SELECT \n"
-                    + "    SUM(valortotalvenda) AS q\n"
-                    + "FROM\n"
-                    + "    (SELECT \n"
-                    + "        venda_id, SUM(preco) * vendas.quantidade AS valortotalvenda\n"
-                    + "    FROM\n"
-                    + "        produtos\n"
-                    + "    JOIN vendas USING (prod_id)\n"
-                    + "    where month(data) = ? and year(data) = ?\n"
-                    + "    GROUP BY venda_id) derived"
-            );
-
-            ptmt.setInt(1, previousMonth);
-            ptmt.setInt(2, currentYear);
-            set = ptmt.executeQuery();
-            set.next();
-
-            if (set == null)
-                return "Sem dados.";
             
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float mesAnterior = Float.parseFloat(set.getString("q"));
-            float mesAtual = Float.parseFloat(updateValorTotalVendas());
+        String mesAnteriorS = valorTotalVendasMes(previousMonth);
+        String mesAtualS = valorTotalVendasMes(currentMonth);
 
-            if (mesAnterior == 0)
-                return "Sem dados.";
-            
-            return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
+        if (mesAnteriorS == null || mesAtualS == null)
+            return "Sem dados.";
 
-        } catch (SQLException err) {
-            err.printStackTrace();
-        }
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
 
-        return "error";
+        if (mesAnterior == 0 || mesAtual == 0)
+            return "Sem dados.";
+
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 

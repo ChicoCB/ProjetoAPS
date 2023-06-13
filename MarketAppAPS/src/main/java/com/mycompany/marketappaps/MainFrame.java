@@ -7,6 +7,8 @@ package com.mycompany.marketappaps;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import java.sql.*;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -32,6 +34,17 @@ public class MainFrame extends javax.swing.JFrame {
             return;
         }
 
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            UIManager.put("nimbusBase", java.awt.Color.darkGray);
+            UIManager.put("nimbusBlueGray", java.awt.Color.gray);
+            UIManager.put("control", java.awt.Color.lightGray);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        
         initComponents();
 
         login = new Login(this);
