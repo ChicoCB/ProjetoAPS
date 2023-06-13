@@ -61,17 +61,18 @@ public class Home extends javax.swing.JPanel {
                     //Pass database connection to Relatorio
                     
                     int previousMonth = jComboBox3.getSelectedIndex() + 1;
+                    int currentMonth = jComboBox4.getSelectedIndex() + 1;
                     
-                    Relatorio rel = new Relatorio(mainframe.con,previousMonth);
+                    Relatorio rel = new Relatorio(mainframe.con,currentMonth, previousMonth);
 
-                    qntdProdEstoq.setText(rel.updateQntdProdEst());
+                    qntdProdEstoq.setText(rel.updateProdutosNovos());
                     qntdVendas.setText(rel.updateQntdVendas());
                     valorTotalVendas.setText(rel.updateValorTotalVendas());
                     gastosEntregas.setText(rel.updateGastosEntregas());
                     gastoProdutos.setText(rel.updateGastoProdutos());
                     gastoTotal.setText(rel.updateGastoTotal());
                     lucroTotal.setText(rel.updateLucroTotal());
-                    ganhoEstoqueProduto.setText(rel.updateGanhoProdEst());
+                    ganhoEstoqueProduto.setText(rel.updateGanhoProdutosNovos());
                     ganhoQntdVendas.setText(rel.updateGanhoQntdVendas());
                     ganhoGastoProdutos.setText(rel.updateGanhoGastoProdutos());
                     ganhoValorTotal.setText(rel.updateGanhoValorTotalVendas());
@@ -201,8 +202,8 @@ public class Home extends javax.swing.JPanel {
         ganhoGastosTotais = new javax.swing.JTextField();
         ganhoLucrosTotais = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
-        jTextField27 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -815,7 +816,7 @@ public class Home extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
                                 .addComponent(jButton8)))))
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -868,7 +869,8 @@ public class Home extends javax.swing.JPanel {
         jLabel32.setText("Relatório Mensal");
         jLabel32.setFocusable(false);
 
-        jLabel33.setText("Quantidade de produtos em estoque:");
+        jLabel33.setText("Produtos novo registrados:");
+        jLabel33.setToolTipText("");
         jLabel33.setFocusable(false);
 
         jLabel35.setText("Quantidade de vendas:");
@@ -913,7 +915,7 @@ public class Home extends javax.swing.JPanel {
 
         lucroTotal.setFocusable(false);
 
-        jLabel41.setText("Dados");
+        jLabel41.setText("Dados do mês:");
         jLabel41.setFocusable(false);
 
         jLabel42.setText("Ganho em relação ao mês:");
@@ -951,12 +953,6 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
-        jTextField27.setBackground(java.awt.SystemColor.window);
-        jTextField27.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField27.setBorder(null);
-        jTextField27.setFocusable(false);
-
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
         jComboBox3.setToolTipText("");
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -965,26 +961,32 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        jComboBox4.setToolTipText("");
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(257, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addGap(468, 468, 468))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton10)
-                        .addGap(96, 96, 96)
-                        .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(296, 296, 296))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(91, 91, 91)
                                 .addComponent(jLabel41)
-                                .addGap(259, 259, 259)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(187, 187, 187)
                                 .addComponent(jLabel42)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1006,16 +1008,21 @@ public class Home extends javax.swing.JPanel {
                                     .addComponent(gastoProdutos)
                                     .addComponent(gastoTotal)
                                     .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(154, 154, 154)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(ganhoQntdVendas)
-                                    .addComponent(ganhoValorTotal)
-                                    .addComponent(ganhoGastosEntregas)
-                                    .addComponent(ganhoGastoProdutos)
-                                    .addComponent(ganhoGastosTotais)
-                                    .addComponent(ganhoLucrosTotais))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(150, 150, 150)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ganhoGastosTotais)
+                                        .addComponent(ganhoGastoProdutos, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(ganhoGastosEntregas, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(ganhoValorTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(ganhoQntdVendas, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(260, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addGap(454, 454, 454))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1023,50 +1030,58 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(34, 34, 34)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel42)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(qntdProdEstoq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(qntdVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoQntdVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(valorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(gastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoGastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel40)
-                    .addComponent(gastoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoGastoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(gastoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoGastosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel41)
+                            .addComponent(jLabel42)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(qntdProdEstoq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel35)
+                            .addComponent(qntdVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel34)
+                            .addComponent(valorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel39)
+                            .addComponent(gastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(gastoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37)
+                            .addComponent(gastoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(lucroTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(ganhoEstoqueProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ganhoQntdVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ganhoValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ganhoGastosEntregas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ganhoGastoProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ganhoGastosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ganhoLucrosTotais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(71, 71, 71)
+                .addComponent(jButton10)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Relatório", jPanel5);
@@ -1196,7 +1211,7 @@ public class Home extends javax.swing.JPanel {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(57, 57, 57)
                                 .addComponent(jButton11)))))
-                .addContainerGap(404, Short.MAX_VALUE))
+                .addContainerGap(407, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1664,11 +1679,12 @@ public class Home extends javax.swing.JPanel {
         }
               
         int previousMonth = jComboBox3.getSelectedIndex() + 1;
+        int currentMonth = jComboBox4.getSelectedIndex() + 1;
         
-        if (!new Relatorio(mainframe.con,previousMonth).generateRelatorio(newFile.getAbsolutePath())) {
-            jTextField27.setText("Falha em gerar PDF");
+        if (!new Relatorio(mainframe.con,currentMonth,previousMonth).generateRelatorio(newFile.getAbsolutePath())) {
+             JOptionPane.showMessageDialog(null, "Falha em gerar PDF.");
         } else {
-            jTextField27.setText("PDF gerado com sucesso");
+             JOptionPane.showMessageDialog(null, "PDF gerado com sucesso");
         }
 
 
@@ -2020,17 +2036,18 @@ public class Home extends javax.swing.JPanel {
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         int previousMonth = jComboBox3.getSelectedIndex() + 1;
-                    
-        Relatorio rel = new Relatorio(mainframe.con,previousMonth);
+        int currentMonth  = jComboBox4.getSelectedIndex() + 1;
+        
+        Relatorio rel = new Relatorio(mainframe.con,currentMonth,previousMonth);
 
-        qntdProdEstoq.setText(rel.updateQntdProdEst());
+        qntdProdEstoq.setText(rel.updateProdutosNovos());
         qntdVendas.setText(rel.updateQntdVendas());
         valorTotalVendas.setText(rel.updateValorTotalVendas());
         gastosEntregas.setText(rel.updateGastosEntregas());
         gastoProdutos.setText(rel.updateGastoProdutos());
         gastoTotal.setText(rel.updateGastoTotal());
         lucroTotal.setText(rel.updateLucroTotal());
-        ganhoEstoqueProduto.setText(rel.updateGanhoProdEst());
+        ganhoEstoqueProduto.setText(rel.updateGanhoProdutosNovos());
         ganhoQntdVendas.setText(rel.updateGanhoQntdVendas());
         ganhoGastoProdutos.setText(rel.updateGanhoGastoProdutos());
         ganhoValorTotal.setText(rel.updateGanhoValorTotalVendas());
@@ -2040,6 +2057,28 @@ public class Home extends javax.swing.JPanel {
                 
         
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        int previousMonth = jComboBox3.getSelectedIndex() + 1;
+        int currentMonth  = jComboBox4.getSelectedIndex() + 1;
+        
+        Relatorio rel = new Relatorio(mainframe.con,currentMonth,previousMonth);
+
+        qntdProdEstoq.setText(rel.updateProdutosNovos());
+        qntdVendas.setText(rel.updateQntdVendas());
+        valorTotalVendas.setText(rel.updateValorTotalVendas());
+        gastosEntregas.setText(rel.updateGastosEntregas());
+        gastoProdutos.setText(rel.updateGastoProdutos());
+        gastoTotal.setText(rel.updateGastoTotal());
+        lucroTotal.setText(rel.updateLucroTotal());
+        ganhoEstoqueProduto.setText(rel.updateGanhoProdutosNovos());
+        ganhoQntdVendas.setText(rel.updateGanhoQntdVendas());
+        ganhoGastoProdutos.setText(rel.updateGanhoGastoProdutos());
+        ganhoValorTotal.setText(rel.updateGanhoValorTotalVendas());
+        ganhoGastosEntregas.setText(rel.updateGanhoGastosEntregas());
+        ganhoGastosTotais.setText(rel.updateGanhoGastoTotal());
+        ganhoLucrosTotais.setText(rel.updateGanhoLucroTotal());
+    }//GEN-LAST:event_jComboBox4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2070,6 +2109,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2155,7 +2195,6 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField3;

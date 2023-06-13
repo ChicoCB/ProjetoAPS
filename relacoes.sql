@@ -1,80 +1,97 @@
--- Inserting data into users table
+-- Tabela users
 INSERT INTO users (nome, senha, super_user) VALUES
-    ('Francisco', '1234', 1),
-    ('Jane Smith', 'pass456', 0),
-    ('Mark Johnson', 'test789', 0);
+('Francisco', '1234', 1),
+('Maria', 'abcdef', 0),
+('Pedro', 'qwerty', 0);
 
--- Inserting data into clientes table
+-- Tabela produtos
+INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES
+('Produto A', '10.00', '20', '15.00', '2023-01-01', null),
+('Produto B', '15.50', '30', '20.00', '2023-01-02', null),
+('Produto C', '8.90', '25', '12.00', '2023-01-03', null),
+('Produto D', '12.75', '10', '18.00', '2023-01-04', null),
+('Produto E', '9.99', '50', '14.00', '2023-01-05', null),
+('Produto F', '7.50', '15', '10.00', '2023-01-06', null),
+('Produto G', '11.25', '40', '16.00', '2023-01-07', null),
+('Produto H', '6.80', '35', '9.00', '2023-01-08', null),
+('Produto I', '14.50', '5', '20.00', '2023-01-09', null),
+('Produto J', '5.99', '60', '12.00', '2023-01-10', null),
+('Produto K', '10.99', '30', '16.00', '2023-01-11', null),
+('Produto L', '8.25', '20', '11.00', '2023-01-12', null),
+('Produto M', '13.75', '12', '18.00', '2023-01-13', null),
+('Produto N', '9.50', '45', '15.00', '2023-01-14', null),
+('Produto O', '7.80', '15', '10.00', '2023-01-15', null),
+('Produto 16', '10.99', '8', '15.99', '2023-02-01', null),
+('Produto 17', '5.99', '12', '9.99', '2023-03-01', null),
+('Produto 18', '7.50', '5', '12.99', '2023-04-01', null),
+('Produto 19', '3.99', '10', '7.99', '2023-05-01', null),
+('Produto 20', '8.99', '3', '14.99', '2023-06-01', null),
+('Produto 21', '9.99', '6', '17.99', '2023-07-01', null),
+('Produto 22', '6.50', '9', '11.99', '2023-08-01', null),
+('Produto 23', '4.99', '4', '8.99', '2023-09-01', null),
+('Produto 24', '7.99', '7', '13.99', '2023-10-01', null),
+('Produto 25', '5.50', '2', '9.99', '2023-11-01', null);
+
+-- Tabela clientes
 INSERT INTO clientes (nome, sobrenome) VALUES
-    ('Alice', 'Brown'),
-    ('Bob', 'Smith'),
-    ('Charlie', 'Johnson');
+('Ana', 'Silva'),
+('Carlos', 'Santos'),
+('Fernanda', 'Oliveira'),
+('Ricardo', 'Pereira'),
+('Juliana', 'Almeida');
 
--- Inserting data into enderecos table
+-- Tabela enderecos
 INSERT INTO enderecos (client_ID, bairro, rua, numero) VALUES
-    (1, 'Downtown', 'Main Street', '123'),
-    (2, 'Suburb', 'Park Avenue', '456'),
-    (3, 'City Center', 'Broadway', '789');
-    
+(1, 'Centro', 'Rua A', '123'),
+(2, 'Vila Nova', 'Rua B', '456'),
+(3, 'Jardim Primavera', 'Rua C', '789'),
+(4, 'Bela Vista', 'Rua D', '1011'),
+(5, 'Alto da Serra', 'Rua E', '1213');
 
--- Inserts for clientes table
-INSERT INTO clientes (nome, sobrenome) VALUES
-    ('Eve', 'Johnson'),
-    ('Frank', 'Brown'),
-    ('Grace', 'Smith'),
-    ('Henry', 'Taylor');
-    
--- Inserts for clientes table
-INSERT INTO clientes (nome, sobrenome) VALUES
-    ('Ivy', 'Anderson'),
-    ('Jack', 'Wilson'),
-    ('Kate', 'Miller');
-
--- Inserts for enderecos table
-INSERT INTO enderecos (client_ID, bairro, rua, numero) VALUES
-    (4, 'Suburb', 'Oak Street', '789'),
-    (5, 'City Center', 'Maple Avenue', '123'),
-    (6, 'Downtown', 'Elm Road', '456'),
-    (7, 'Suburb', 'Cedar Lane', '321');
-
-
-    
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Camiseta', '29.99', '50', '39.99', '2023-05-01', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Calça jeans', '79.99', '30', '99.99', '2023-05-02', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Tênis esportivo', '99.99', '20', '129.99', '2023-05-03', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Boné', '19.99', '100', '24.99', '2023-05-04', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Vestido', '49.99', '40', '59.99', '2023-05-05', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Bolsa', '39.99', '25', '49.99', '2023-06-05', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Óculos de sol', '29.99', '35', '39.99', '2023-05-07', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Cinto', '14.99', '80', '19.99', '2023-05-08', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Chapéu', '24.99', '60', '29.99', '2023-06-09', NULL);
-INSERT INTO produtos (nome, preco, quantidade, preco_venda, data_cadastramento, imagem) VALUES ('Camisa social', '59.99', '15', '79.99', '2023-06-10', NULL);
-
-
--- Inserts for enderecos table
-INSERT INTO enderecos (client_ID, bairro, rua, numero) VALUES
-    (8, 'City Center', 'Oak Avenue', '456'),
-    (9, 'Downtown', 'Elm Street', '789'),
-    (10, 'Suburb', 'Cedar Road', '123');
-
-
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (1, 1, '2', 1, '2023-05-01', 'Concluída', '2023-06-05', '5.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (2, 2, '1', 2, '2023-05-02', 'Concluída', '2023-06-06', '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (3, 3, '3', 3, '2023-05-03', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (4, 4, '2', 1, '2023-05-04', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (5, 5, '1', 1, '2023-06-05', 'Concluída', '2023-06-07', '3.50');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (6, 6, '2', 1, '2023-06-06', 'Concluída', '2023-06-08', '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (7, 7, '1', 1, '2023-06-07', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (8, 8, '3', 2, '2023-06-08', 'Concluída', '2023-06-10', '7.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (9, 9, '2', 2, '2023-06-09', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (10, 10, '1', 2, '2023-06-10', 'Concluída', '2023-06-12', '4.50');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (1, 2, '20', 2, '2023-06-11', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (2, 3, '10', 2, '2023-06-12', 'Concluída', '2023-06-14', '3.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (3, 3, '30', 3, '2023-06-13', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (4, 4, '20', 3, '2023-06-14', 'Concluída', '2023-06-16', '6.50');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (5, 5, '10', 3, '2023-06-15', 'Concluída', '2023-06-17', '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (6, 6, '20', 3, '2023-06-16', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (7, 7, '10', 1, '2023-06-17', 'Concluída', '2023-06-19', '3.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (8, 8, '30', 1, '2023-06-18', 'Pendente', NULL, '0.00');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (9, 9, '20', 1, '2023-06-19', 'Concluída', '2023-06-21', '5.50');
-INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES (10, 10, '10', 2, '2023-06-20', 'Concluída', '2023-06-22', '0.00');
+-- Tabela vendas
+INSERT INTO vendas (prod_ID, endereco_ID, quantidade, client_ID, data, status, data_entrega, custo_entrega) VALUES
+(1, 1, '2', 1, '2023-01-01', 'Entregue', '2023-01-03', '5.00'),
+(2, 2, '1', 2, '2023-01-02', 'Cancelada', null, '0.00'),
+(3, 3, '3', 3, '2023-01-03', 'Em processamento', null, '0.00'),
+(4, 4, '2', 4, '2023-01-04', 'A caminho', null, '3.50'),
+(5, 5, '1', 5, '2023-01-05', 'Em processamento', null, '0.00'),
+(6, 1, '4', 1, '2023-02-06', 'Entregue', '2023-02-08', '7.00'),
+(7, 2, '1', 2, '2023-02-07', 'Entregue', '2023-02-09', '5.00'),
+(8, 3, '2', 3, '2023-02-08', 'Entregue', '2023-02-10', '4.50'),
+(9, 4, '3', 4, '2023-02-09', 'Entregue', '2023-02-11', '6.50'),
+(10, 5, '2', 5, '2023-02-10', 'A caminho', null, '3.50'),
+(11, 1, '1', 1, '2023-03-11', 'Cancelada', null, '0.00'),
+(12, 2, '2', 2, '2023-03-12', 'Em processamento', null, '0.00'),
+(13, 3, '1', 3, '2023-03-13', 'Entregue', '2023-03-15', '5.00'),
+(14, 4, '3', 4, '2023-03-14', 'Em processamento', null, '0.00'),
+(15, 5, '2', 5, '2023-03-15', 'Entregue', '2023-03-17', '4.50'),
+(16, 1, '1', 1, '2023-04-16', 'Entregue', '2023-04-18', '3.50'),
+(17, 2, '2', 2, '2023-04-17', 'A caminho', null, '3.50'),
+(18, 3, '3', 3, '2023-04-18', 'Em processamento', null, '0.00'),
+(19, 4, '1', 4, '2023-04-19', 'Entregue', '2023-04-21', '5.00'),
+(20, 5, '4', 5, '2023-04-20', 'Entregue', '2023-04-22', '7.00'),
+(21, 1, '2', 1, '2023-05-21', 'Entregue', '2023-05-23', '4.50'),
+(22, 2, '1', 2, '2023-05-22', 'Em processamento', null, '0.00'),
+(23, 3, '3', 3, '2023-05-23', 'Entregue', '2023-05-25', '6.00'),
+(24, 4, '2', 4, '2023-05-24', 'A caminho', null, '3.50'),
+(25, 5, '1', 5, '2023-05-25', 'Em processamento', null, '0.00'),
+(21, 1, '2', 1, '2023-06-01', 'Entregue', '2023-06-03', '5.00'),
+(22, 2, '1', 2, '2023-06-02', 'Cancelada', null, '0.00'),
+(23, 3, '3', 3, '2023-06-03', 'Em processamento', null, '0.00'),
+(24, 4, '2', 4, '2023-06-04', 'A caminho', null, '3.50'),
+(25, 5, '1', 5, '2023-06-05', 'Em processamento', null, '0.00'),
+(11, 1, '1', 1, '2023-09-11', 'Entregue', '2023-09-13', '3.50'),
+(12, 2, '2', 2, '2023-09-12', 'A caminho', null, '3.50'),
+(13, 3, '3', 3, '2023-09-13', 'Em processamento', null, '0.00'),
+(14, 4, '1', 4, '2023-09-14', 'Entregue', '2023-09-16', '5.00'),
+(15, 5, '4', 5, '2023-09-15', 'Entregue', '2023-09-17', '7.00'),
+(16, 1, '2', 1, '2023-10-16', 'Entregue', '2023-10-18', '3.50'),
+(17, 2, '2', 2, '2023-10-17', 'A caminho', null, '3.50'),
+(18, 3, '3', 3, '2023-10-18', 'Em processamento', null, '0.00'),
+(19, 4, '1', 4, '2023-10-19', 'Entregue', '2023-10-21', '5.00'),
+(20, 5, '4', 5, '2023-10-20', 'Entregue', '2023-10-22', '7.00'),
+(21, 1, '2', 1, '2023-12-21', 'Entregue', '2023-12-23', '4.50'),
+(22, 2, '1', 2, '2023-12-22', 'Em processamento', null, '0.00'),
+(23, 3, '3', 3, '2023-12-23', 'Entregue', '2023-12-25', '6.00'),
+(24, 4, '2', 4, '2023-12-24', 'A caminho', null, '3.50'),
+(25, 5, '1', 5, '2023-12-25', 'Em processamento', null, '0.00');

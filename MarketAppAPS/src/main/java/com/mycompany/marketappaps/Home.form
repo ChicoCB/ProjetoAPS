@@ -855,7 +855,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="237" max="32767" attributes="0"/>
+                      <EmptySpace pref="238" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1062,23 +1062,20 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="257" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="468" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                              <Component id="jTextField27" min="-2" pref="164" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                                       <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="259" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
                                       <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
@@ -1103,21 +1100,28 @@
                                           <Component id="gastoTotal" alignment="0" max="32767" attributes="0"/>
                                           <Component id="lucroTotal" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="ganhoEstoqueProduto" pref="100" max="32767" attributes="0"/>
-                                          <Component id="ganhoQntdVendas" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="ganhoValorTotal" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="ganhoGastosEntregas" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="ganhoGastoProdutos" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="ganhoGastosTotais" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="ganhoLucrosTotais" alignment="1" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="ganhoLucrosTotais" min="-2" pref="141" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="ganhoGastosTotais" max="32767" attributes="0"/>
+                                              <Component id="ganhoGastoProdutos" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="ganhoGastosEntregas" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="ganhoValorTotal" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="ganhoQntdVendas" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="ganhoEstoqueProduto" min="-2" pref="141" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="260" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="454" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1127,59 +1131,69 @@
                       <EmptySpace pref="48" max="32767" attributes="0"/>
                       <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="qntdProdEstoq" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="qntdVendas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valorTotalVendas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="gastosEntregas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="gastoProdutos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="gastoTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lucroTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="ganhoEstoqueProduto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ganhoQntdVendas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ganhoValorTotal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ganhoGastosEntregas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ganhoGastoProdutos" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ganhoGastosTotais" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ganhoLucrosTotais" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="qntdProdEstoq" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoEstoqueProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="qntdVendas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoQntdVendas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="valorTotalVendas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoValorTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gastosEntregas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoGastosEntregas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gastoProdutos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoGastoProdutos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gastoTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoGastosTotais" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lucroTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ganhoLucrosTotais" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField27" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="94" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="jButton10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1193,7 +1207,8 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel33">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Quantidade de produtos em estoque:"/>
+                <Property name="text" type="java.lang.String" value="Produtos novo registrados:"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -1297,7 +1312,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel41">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dados"/>
+                <Property name="text" type="java.lang.String" value="Dados do m&#xea;s:"/>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -1378,21 +1393,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField27">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="df" green="df" id="Window" palette="2" red="df" type="palette"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="focusable" type="boolean" value="false"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox3">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1415,6 +1415,33 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox4">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="12">
+                    <StringItem index="0" value="Janeiro"/>
+                    <StringItem index="1" value="Fevereiro"/>
+                    <StringItem index="2" value="Mar&#xe7;o"/>
+                    <StringItem index="3" value="Abril"/>
+                    <StringItem index="4" value="Maio"/>
+                    <StringItem index="5" value="Junho"/>
+                    <StringItem index="6" value="Julho"/>
+                    <StringItem index="7" value="Agosto"/>
+                    <StringItem index="8" value="Setembro"/>
+                    <StringItem index="9" value="Outubro"/>
+                    <StringItem index="10" value="Novembro"/>
+                    <StringItem index="11" value="Dezembro"/>
+                  </StringArray>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1503,7 +1530,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="404" max="32767" attributes="0"/>
+                      <EmptySpace pref="407" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

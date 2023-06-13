@@ -27,126 +27,119 @@ public class Relatorio {
     private ResultSet set;
     private final Connection con;
 
-    public Relatorio(Connection con, int previousMonth) {
+    public Relatorio(Connection con, int currentMonth, int previousMonth) {
         //Salva a data atual
         this.set = null;
         this.con = con;
         this.date = LocalDate.now();
         this.previousMonth = previousMonth;
-        currentMonth = date.getMonth().getValue();
+        this.currentMonth = currentMonth;
         currentYear = date.getYear();
     }
 
-    public String updateQntdProdEst() {
+    public String produtosNovosMes(int mes) {
+        
         try {
-
-            PreparedStatement ptmt = con.prepareStatement(
-                    "select sum(quantidade) as q "
-                    + "from produtos");
-
-            set = ptmt.executeQuery();
-            set.next();
-            return set.getString("q");
-
-        } catch (SQLException err) {
-            err.printStackTrace();
-        }
-
-        return "error";
-    }
-
-    public String updateGanhoProdEst() {
-
-        try {
-
             PreparedStatement ptmt = con.prepareStatement("SELECT \n"
                     + "    SUM(quantidade) AS q\n"
                     + "FROM\n"
                     + "    produtos\n"
                     + "WHERE\n"
-                    + "    MONTH(data_cadastramento) <= ?\n"
-                    + "        AND YEAR(data_cadastramento) <= ?");
+                    + "    MONTH(data_cadastramento) = ?\n"
+                    + "        AND YEAR(data_cadastramento) = ?");
 
-            ptmt.setInt(1, previousMonth);
+            ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            set.next();
 
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float mesAnterior = Float.parseFloat(set.getString("q"));
-            float mesAtual = Float.parseFloat(updateQntdProdEst());
-
-            if (mesAnterior == 0)
-                return "Sem dados.";
-                
-            return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
+            if (set.next())
+                return set.getString("q");
+            return "0";
 
         } catch (SQLException err) {
             err.printStackTrace();
         }
 
         return "error";
+        
+    }
+    
+    public String updateProdutosNovos() {
+        
+        String total = produtosNovosMes(currentMonth);
+        if (total == null)
+            total = "0";
+        
+        return total;
+        
+    }
+
+    public String updateGanhoProdutosNovos() {
+
+       String mesAnteriorS = produtosNovosMes(previousMonth);
+        String mesAtualS = produtosNovosMes(currentMonth);
+
+        if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+            
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
+
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
+
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 
-    public String updateQntdVendas() {
+    public String qntdVendasMes(int mes) {
+        
         try {
             PreparedStatement ptmt = con.prepareStatement(
                     "select count(venda_id) as q"
                     + " from vendas where MONTH(data) = ? and YEAR(data) = ?"
             );
 
-            ptmt.setInt(1, currentMonth);
+            ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            set.next();
-            return set.getString("q");
+            if (set.next())
+                return set.getString("q");
+            return "0";
 
         } catch (SQLException err) {
             err.printStackTrace();
         }
         return "error";
+        
+    }
+    
+    public String updateQntdVendas() {
+        String total = qntdVendasMes(currentMonth);
+        if (total == null)
+            total = "0";
+        return total;
     }
 
     public String updateGanhoQntdVendas() {
-        try {
-            PreparedStatement ptmt = con.prepareStatement(
-                    "select count(venda_id) as q"
-                    + " from vendas where MONTH(data) = ? and YEAR(data) = ?"
-            );
+        
+        String mesAnteriorS = qntdVendasMes(previousMonth);
+        String mesAtualS = qntdVendasMes(currentMonth);
 
-            ptmt.setInt(1, previousMonth);
-            ptmt.setInt(2, currentYear);
-            set = ptmt.executeQuery();
-            set.next();
+        if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+        
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
 
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float mesAnterior = Float.parseFloat(set.getString("q"));
-            float mesAtual = Float.parseFloat(updateQntdVendas());
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
 
-            if (mesAnterior == 0)
-                return "Sem dados.";
-            
-            return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
-
-        } catch (SQLException err) {
-            err.printStackTrace();
-        }
-        return "error";
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
     public String valorTotalVendasMes(int mes) {
@@ -168,8 +161,10 @@ public class Relatorio {
             ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            set.next();
-            return set.getString("q");
+            if (set.next())
+                return set.getString("q");
+            
+            return "0";
 
         } catch (SQLException err) {
             err.printStackTrace();
@@ -183,6 +178,8 @@ public class Relatorio {
 
         
         String total = valorTotalVendasMes(currentMonth);
+        if (total == null)
+            total = "0";
         return total;
              
     }
@@ -192,21 +189,23 @@ public class Relatorio {
         String mesAnteriorS = valorTotalVendasMes(previousMonth);
         String mesAtualS = valorTotalVendasMes(currentMonth);
 
-        if (mesAnteriorS == null || mesAtualS == null)
-            return "Sem dados.";
-
+        if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+        
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0 || mesAtual == 0)
-            return "Sem dados.";
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 
-    public String updateGastosEntregas() {
-
+    public String gastoEntregaMes(int mes) {
+        
         try {
 
             PreparedStatement ptmt = con.prepareStatement(
@@ -214,59 +213,53 @@ public class Relatorio {
                     + " from vendas where MONTH(data) = ? and YEAR(data) = ?"
             );
 
-            ptmt.setInt(1, currentMonth);
+            ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            set.next();
-            return set.getString("q");
+            if (set.next())
+                return set.getString("q");
+            
+            return "0";
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
 
         return "error";
+        
+    }
+    
+    public String updateGastosEntregas() {
+
+        String total = gastoEntregaMes(currentMonth);
+        if (total == null)
+            total = "0";
+        return total;
+        
     }
 
     public String updateGanhoGastosEntregas() {
 
-        try {
+        String mesAnteriorS = gastoEntregaMes(previousMonth);
+        String mesAtualS = gastoEntregaMes(currentMonth);
 
-            PreparedStatement ptmt = con.prepareStatement(
-                    "select sum(custo_entrega) as q"
-                    + " from vendas where MONTH(data) = ? and YEAR(data) = ?"
-            );
+        if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+        
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
 
-            ptmt.setInt(1, previousMonth);
-            ptmt.setInt(2, currentYear);
-            set = ptmt.executeQuery();
-            set.next();
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
 
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float mesAnterior = Float.parseFloat(set.getString("q"));
-            float mesAtual = Float.parseFloat(updateGastosEntregas());
-
-            if (mesAnterior == 0)
-                return "Sem dados.";
-            
-            return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
-
-        } catch (SQLException sqle1) {
-            sqle1.printStackTrace();
-        }
-
-        return "error";
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 
-    public String updateGastoProdutos() {
-
+    public String gastoProdutosMes(int mes) {
+        
         try {
 
             PreparedStatement ptmt = con.prepareStatement("SELECT \n"
@@ -281,242 +274,137 @@ public class Relatorio {
                     + "            AND YEAR(data_cadastramento) = ?\n"
                     + "    GROUP BY prod_id) derived");
 
-            ptmt.setInt(1, currentMonth);
+            ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            set.next();
-            return set.getString("q");
+            if (set.next())
+                return set.getString("q");
+            
+            return "0";
 
         } catch (SQLException sqle1) {
             sqle1.printStackTrace();
         }
 
         return "error";
+        
+    }
+    
+    public String updateGastoProdutos() {
+
+        String total = gastoProdutosMes(currentMonth);
+        if (total == null)
+            total = "0";
+        return total;
 
     }
 
     public String updateGanhoGastoProdutos() {
-        try {
+        String mesAnteriorS = gastoProdutosMes(previousMonth);
+        String mesAtualS = gastoProdutosMes(currentMonth);
 
-            PreparedStatement ptmt = con.prepareStatement("SELECT \n"
-                    + "    SUM(custo) AS q\n"
-                    + "FROM\n"
-                    + "    (SELECT \n"
-                    + "        preco * quantidade AS custo\n"
-                    + "    FROM\n"
-                    + "        produtos\n"
-                    + "    WHERE\n"
-                    + "        MONTH(data_cadastramento) = ?\n"
-                    + "            AND YEAR(data_cadastramento) = ?\n"
-                    + "    GROUP BY prod_id) derived");
+        if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+        
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
 
-            ptmt.setInt(1, previousMonth);
-            ptmt.setInt(2, currentYear);
-            set = ptmt.executeQuery();
-            set.next();
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
 
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float mesAnterior = Float.parseFloat(set.getString("q"));
-            float mesAtual = Float.parseFloat(updateGastoProdutos());
-
-            if (mesAnterior == 0)
-                return "Sem dados.";
-            
-            return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
-
-        } catch (SQLException sqle1) {
-            sqle1.printStackTrace();
-        }
-
-        return "error";
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
+    public String gastoTotalMes(int mes) {
+        
+        String gastoProdS = gastoProdutosMes(mes);
+        String gastoEntregaS = gastoEntregaMes(mes);
+        
+        if (gastoProdS == null)
+            gastoProdS = "0";
+        if (gastoEntregaS == null)
+            gastoEntregaS = "0";
+        
+        float gastoProd = Float.parseFloat(gastoProdS);
+        float gastoEntrega = Float.parseFloat(gastoEntregaS);
+
+        return String.valueOf(gastoProd + gastoEntrega);
+        
+    }
+    
     public String updateGastoTotal() {
 
-        float gasto1 = Float.parseFloat(updateGastoProdutos());
-        float gasto2 = Float.parseFloat(updateGastosEntregas());
-
-        return String.valueOf(gasto1 + gasto2);
-
+        String total = gastoTotalMes(currentMonth);
+        if (total == null)
+            total = "0";
+        return total;
     }
 
     public String updateGanhoGastoTotal() {
 
-        float gasto1Atual = Float.parseFloat(updateGastoProdutos());
-        float gasto2Atual = Float.parseFloat(updateGastosEntregas());
-        float gastoTotAtual = gasto1Atual + gasto2Atual;
+        String mesAnteriorS = gastoTotalMes(previousMonth);
+        String mesAtualS = gastoTotalMes(currentMonth);
 
-        try {
+         if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+        
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
 
-            PreparedStatement ptmt = con.prepareStatement("SELECT \n"
-                    + "    SUM(custo) AS q\n"
-                    + "FROM\n"
-                    + "    (SELECT \n"
-                    + "        preco * quantidade AS custo\n"
-                    + "    FROM\n"
-                    + "        produtos\n"
-                    + "    WHERE\n"
-                    + "        MONTH(data_cadastramento) = ?\n"
-                    + "            AND YEAR(data_cadastramento) = ?\n"
-                    + "    GROUP BY prod_id) derived");
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
 
-            ptmt.setInt(1, previousMonth);
-            ptmt.setInt(2, currentYear);
-            set = ptmt.executeQuery();
-            set.next();
-
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float gasto1Anterior = Float.parseFloat(set.getString("q"));
-
-            PreparedStatement ptmt2 = con.prepareStatement(
-                    "select sum(custo_entrega) as q"
-                    + " from vendas where MONTH(data) = ? and YEAR(data) = ?"
-            );
-
-            ptmt2.setInt(1, previousMonth);
-            ptmt2.setInt(2, currentYear);
-            set = ptmt2.executeQuery();
-            set.next();
-            
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg2 = set.getString("q");
-            
-            if (stg2 == null)
-                return "Sem dados.";
-            
-            float gasto2Anterior = Float.parseFloat(set.getString("q"));
-            float gastoTotAnterior = gasto1Anterior + gasto2Anterior;
-
-            if (gastoTotAnterior == 0)
-                return "Sem dados.";
-            
-            return String.valueOf(((gastoTotAtual - gastoTotAnterior) / gastoTotAnterior) * 100) + " %";
-
-        } catch (SQLException sqle1) {
-            sqle1.printStackTrace();
-        }
-
-        return "error";
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
+        
     }
 
-    public String updateLucroTotal() {
-        float gasto = Float.parseFloat(updateGastoTotal());
-        float ganho = Float.parseFloat(updateValorTotalVendas());
+    public String lucroTotalMes(int mes) {
+        
+        String gastoTotalS = gastoTotalMes(mes);
+        String ganhoS = valorTotalVendasMes(mes);
+        
+        if (gastoTotalS == null)
+            gastoTotalS = "0";
+        if (ganhoS == null)
+            ganhoS = "0";
+        
+        float gastoTotal = Float.parseFloat(gastoTotalS);
+        float ganho = Float.parseFloat(ganhoS);
 
-        return String.valueOf(ganho - gasto);
+        return String.valueOf(ganho - gastoTotal);
+        
+    }
+    
+    public String updateLucroTotal() {
+        String total = lucroTotalMes(currentMonth);
+        if (total == null)
+            total = "0";
+        return total;
     }
 
     public String updateGanhoLucroTotal() {
-        float gastoAtual = Float.parseFloat(updateGastoTotal());
-        float ganhoAtual = Float.parseFloat(updateValorTotalVendas());
-        float lucroAtual = ganhoAtual - gastoAtual;
+        String mesAnteriorS = lucroTotalMes(previousMonth);
+        String mesAtualS = lucroTotalMes(currentMonth);
 
-        try {
+        if (mesAnteriorS == null)
+            mesAnteriorS = "0";
+        if (mesAtualS == null)
+            mesAtualS = "0";
+        
+        float mesAnterior = Float.parseFloat(mesAnteriorS);
+        float mesAtual = Float.parseFloat(mesAtualS);
 
-            PreparedStatement ptmt = con.prepareStatement("SELECT \n"
-                    + "    SUM(custo) AS q\n"
-                    + "FROM\n"
-                    + "    (SELECT \n"
-                    + "        preco * quantidade AS custo\n"
-                    + "    FROM\n"
-                    + "        produtos\n"
-                    + "    WHERE\n"
-                    + "        MONTH(data_cadastramento) = ?\n"
-                    + "            AND YEAR(data_cadastramento) = ?\n"
-                    + "    GROUP BY prod_id) derived");
+        if (mesAnterior == 0)
+            return "Sem dados do mês.";
 
-            ptmt.setInt(1, previousMonth);
-            ptmt.setInt(2, currentYear);
-            set = ptmt.executeQuery();
-            set.next();
-            
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float gasto1Anterior = Float.parseFloat(set.getString("q"));
-
-            PreparedStatement ptmt2 = con.prepareStatement(
-                    "select sum(custo_entrega) as q"
-                    + " from vendas where MONTH(data) = ? and YEAR(data) = ?"
-            );
-
-            ptmt2.setInt(1, previousMonth);
-            ptmt2.setInt(2, currentYear);
-            set = ptmt2.executeQuery();
-            set.next();
-            
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg2 = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float gasto2Anterior = Float.parseFloat(set.getString("q"));
-            float gastoTotAnterior = gasto1Anterior + gasto2Anterior;
-
-            PreparedStatement ptmt3 = con.prepareStatement(
-                    "SELECT \n"
-                    + "    SUM(valortotalvenda) AS q\n"
-                    + "FROM\n"
-                    + "    (SELECT \n"
-                    + "        venda_id, SUM(preco) * vendas.quantidade AS valortotalvenda\n"
-                    + "    FROM\n"
-                    + "        produtos\n"
-                    + "    JOIN vendas USING (prod_id)\n"
-                    + "    where month(data) = ? and year(data) = ?\n"
-                    + "    GROUP BY venda_id) derived"
-            );
-
-            ptmt3.setInt(1, previousMonth);
-            ptmt3.setInt(2, currentYear);
-            set = ptmt3.executeQuery();
-            set.next();
-            
-            if (set == null)
-                return "Sem dados.";
-            
-            String stg3 = set.getString("q");
-            
-            if (stg == null)
-                return "Sem dados.";
-            
-            float ganhoAnterior = Float.parseFloat(set.getString("q"));
-
-            float lucroAnterior = ganhoAnterior - gastoTotAnterior;
-
-            if (lucroAnterior == 0)
-                return "Sem dados.";
-            
-            return String.valueOf(((lucroAtual - lucroAnterior) / lucroAnterior) * 100) + " %";
-
-        } catch (SQLException sqle1) {
-            sqle1.printStackTrace();
-        }
-
-        return "error";
+        if (mesAtual > mesAnterior)
+            return String.valueOf(Math.abs((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
+        
+        return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
     public  boolean generateRelatorio(String filePath) {
@@ -535,12 +423,12 @@ public class Relatorio {
             Table table = new Table(columnWidth).addStyle(s);
 
             table.addHeaderCell("");
-            table.addHeaderCell("Dados");
-            table.addHeaderCell("Ganho em Relação ao mês " + String.valueOf(previousMonth));
+            table.addHeaderCell("Dados do mês: "+ String.valueOf(currentMonth));
+            table.addHeaderCell("Ganho em Relação ao mês: " + String.valueOf(previousMonth));
 
             table.addCell("Quantidade de produtos em estoque:");
-            table.addCell(this.updateQntdProdEst());
-            table.addCell(this.updateGanhoProdEst());
+            table.addCell(this.updateProdutosNovos());
+            table.addCell(this.updateGanhoProdutosNovos());
             table.addCell("Quantidade de vendas:");
             table.addCell(this.updateQntdVendas());
             table.addCell(this.updateGanhoQntdVendas());

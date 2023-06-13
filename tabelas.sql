@@ -47,7 +47,7 @@ CREATE TABLE vendas (
     quantidade VARCHAR(10),
     client_ID INT,
     data DATE,
-    status VARCHAR(20),
+    status enum('Em processamento','Entregue','Cancelada','A caminho'),
     data_entrega DATE NULL,
     custo_entrega varchar(20) default 0,
     PRIMARY KEY (venda_ID),
