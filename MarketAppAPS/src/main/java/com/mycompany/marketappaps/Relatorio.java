@@ -5,14 +5,32 @@
 package com.mycompany.marketappaps;
 
 //PDF library
+import com.itextpdf.io.image.ImageData;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.layout.Document;
 import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
+import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.properties.TabAlignment;
+import com.itextpdf.layout.element.TabStop;
+import com.itextpdf.layout.element.Tab;
+
+
+
 import java.io.*;
+import java.net.MalformedURLException;
 
 import java.time.LocalDate;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,7 +56,7 @@ public class Relatorio {
     }
 
     public String produtosNovosMes(int mes) {
-        
+
         try {
             PreparedStatement ptmt = con.prepareStatement("SELECT \n"
                     + "    SUM(quantidade) AS q\n"
@@ -52,8 +70,9 @@ public class Relatorio {
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
 
-            if (set.next())
+            if (set.next()) {
                 return set.getString("q");
+            }
             return "0";
 
         } catch (SQLException err) {
@@ -61,41 +80,45 @@ public class Relatorio {
         }
 
         return "error";
-        
+
     }
-    
+
     public String updateProdutosNovos() {
-        
+
         String total = produtosNovosMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
-        
+        }
+
         return total;
-        
+
     }
 
     public String updateGanhoProdutosNovos() {
 
-       String mesAnteriorS = produtosNovosMes(previousMonth);
+        String mesAnteriorS = produtosNovosMes(previousMonth);
         String mesAtualS = produtosNovosMes(currentMonth);
 
-        if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-            
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 
     public String qntdVendasMes(int mes) {
-        
+
         try {
             PreparedStatement ptmt = con.prepareStatement(
                     "select count(venda_id) as q"
@@ -105,45 +128,50 @@ public class Relatorio {
             ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            if (set.next())
+            if (set.next()) {
                 return set.getString("q");
+            }
             return "0";
 
         } catch (SQLException err) {
             err.printStackTrace();
         }
         return "error";
-        
+
     }
-    
+
     public String updateQntdVendas() {
         String total = qntdVendasMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
+        }
         return total;
     }
 
     public String updateGanhoQntdVendas() {
-        
+
         String mesAnteriorS = qntdVendasMes(previousMonth);
         String mesAtualS = qntdVendasMes(currentMonth);
 
-        if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-        
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
     public String valorTotalVendasMes(int mes) {
-        
+
         try {
             PreparedStatement ptmt = con.prepareStatement(
                     "SELECT \n"
@@ -161,9 +189,10 @@ public class Relatorio {
             ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            if (set.next())
+            if (set.next()) {
                 return set.getString("q");
-            
+            }
+
             return "0";
 
         } catch (SQLException err) {
@@ -171,41 +200,44 @@ public class Relatorio {
         }
 
         return "error";
-        
+
     }
-    
+
     public String updateValorTotalVendas() {
 
-        
         String total = valorTotalVendasMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
+        }
         return total;
-             
+
     }
 
     public String updateGanhoValorTotalVendas() {
-            
+
         String mesAnteriorS = valorTotalVendasMes(previousMonth);
         String mesAtualS = valorTotalVendasMes(currentMonth);
 
-        if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-        
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 
     public String gastoEntregaMes(int mes) {
-        
+
         try {
 
             PreparedStatement ptmt = con.prepareStatement(
@@ -216,9 +248,10 @@ public class Relatorio {
             ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            if (set.next())
+            if (set.next()) {
                 return set.getString("q");
-            
+            }
+
             return "0";
 
         } catch (SQLException sqle1) {
@@ -226,16 +259,17 @@ public class Relatorio {
         }
 
         return "error";
-        
+
     }
-    
+
     public String updateGastosEntregas() {
 
         String total = gastoEntregaMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
+        }
         return total;
-        
+
     }
 
     public String updateGanhoGastosEntregas() {
@@ -243,23 +277,26 @@ public class Relatorio {
         String mesAnteriorS = gastoEntregaMes(previousMonth);
         String mesAtualS = gastoEntregaMes(currentMonth);
 
-        if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-        
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
 
     }
 
     public String gastoProdutosMes(int mes) {
-        
+
         try {
 
             PreparedStatement ptmt = con.prepareStatement("SELECT \n"
@@ -277,9 +314,10 @@ public class Relatorio {
             ptmt.setInt(1, mes);
             ptmt.setInt(2, currentYear);
             set = ptmt.executeQuery();
-            if (set.next())
+            if (set.next()) {
                 return set.getString("q");
-            
+            }
+
             return "0";
 
         } catch (SQLException sqle1) {
@@ -287,14 +325,15 @@ public class Relatorio {
         }
 
         return "error";
-        
+
     }
-    
+
     public String updateGastoProdutos() {
 
         String total = gastoProdutosMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
+        }
         return total;
 
     }
@@ -303,42 +342,48 @@ public class Relatorio {
         String mesAnteriorS = gastoProdutosMes(previousMonth);
         String mesAtualS = gastoProdutosMes(currentMonth);
 
-        if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-        
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
     public String gastoTotalMes(int mes) {
-        
+
         String gastoProdS = gastoProdutosMes(mes);
         String gastoEntregaS = gastoEntregaMes(mes);
-        
-        if (gastoProdS == null)
+
+        if (gastoProdS == null) {
             gastoProdS = "0";
-        if (gastoEntregaS == null)
+        }
+        if (gastoEntregaS == null) {
             gastoEntregaS = "0";
-        
+        }
+
         float gastoProd = Float.parseFloat(gastoProdS);
         float gastoEntrega = Float.parseFloat(gastoEntregaS);
 
         return String.valueOf(gastoProd + gastoEntrega);
-        
+
     }
-    
+
     public String updateGastoTotal() {
 
         String total = gastoTotalMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
+        }
         return total;
     }
 
@@ -347,42 +392,48 @@ public class Relatorio {
         String mesAnteriorS = gastoTotalMes(previousMonth);
         String mesAtualS = gastoTotalMes(currentMonth);
 
-         if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-        
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
-        
+
     }
 
     public String lucroTotalMes(int mes) {
-        
+
         String gastoTotalS = gastoTotalMes(mes);
         String ganhoS = valorTotalVendasMes(mes);
-        
-        if (gastoTotalS == null)
+
+        if (gastoTotalS == null) {
             gastoTotalS = "0";
-        if (ganhoS == null)
+        }
+        if (ganhoS == null) {
             ganhoS = "0";
-        
+        }
+
         float gastoTotal = Float.parseFloat(gastoTotalS);
         float ganho = Float.parseFloat(ganhoS);
 
         return String.valueOf(ganho - gastoTotal);
-        
+
     }
-    
+
     public String updateLucroTotal() {
         String total = lucroTotalMes(currentMonth);
-        if (total == null)
+        if (total == null) {
             total = "0";
+        }
         return total;
     }
 
@@ -390,40 +441,56 @@ public class Relatorio {
         String mesAnteriorS = lucroTotalMes(previousMonth);
         String mesAtualS = lucroTotalMes(currentMonth);
 
-        if (mesAnteriorS == null)
+        if (mesAnteriorS == null) {
             mesAnteriorS = "0";
-        if (mesAtualS == null)
+        }
+        if (mesAtualS == null) {
             mesAtualS = "0";
-        
+        }
+
         float mesAnterior = Float.parseFloat(mesAnteriorS);
         float mesAtual = Float.parseFloat(mesAtualS);
 
-        if (mesAnterior == 0)
+        if (mesAnterior == 0) {
             return "Sem dados do mês.";
+        }
 
-        if (mesAtual > mesAnterior)
+        if (mesAtual > mesAnterior) {
             return String.valueOf(Math.abs((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
-        
+        }
+
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
-    public  boolean generateRelatorio(String filePath) {
+    public boolean generateRelatorio(String filePath) {
         try {
-            
+
             if (!filePath.toLowerCase().endsWith(".pdf")) {
-                    filePath += ".pdf";
-                }
-            
+                filePath += ".pdf";
+            }
+
             PdfDocument pdf = new PdfDocument(new PdfWriter(filePath));
             Document document = new Document(pdf);
+
+            String Title = "Chico é Gay & CIA";
+           Paragraph p = new Paragraph();
+           p.setFontColor(new DeviceRgb(8, 73, 117))
+              .setFontSize(20f);
+           p.getAccessibilityProperties().setRole(StandardRoles.H1);
+
+           document.add(p);
+ 
+            addParagraphCentered(pdf,document,p,Title);
 
             float columnWidth[] = {200f, 100f, 100f};
             Style s = new Style();
             s.setFontSize(10f);
-            Table table = new Table(columnWidth).addStyle(s);
+            Table table = new Table(columnWidth).addStyle(s)
+                    .setFixedPosition(50f, 500f, 500f);
+                    
 
             table.addHeaderCell("");
-            table.addHeaderCell("Dados do mês: "+ String.valueOf(currentMonth));
+            table.addHeaderCell("Dados do mês: " + String.valueOf(currentMonth));
             table.addHeaderCell("Ganho em Relação ao mês: " + String.valueOf(previousMonth));
 
             table.addCell("Quantidade de produtos em estoque:");
@@ -450,6 +517,21 @@ public class Relatorio {
 
             document.add(table);
 
+            String imageFile = new File("src/main/java/com/mycompany/marketappaps/assets/monkey.png")
+                    .getAbsolutePath();
+            try {
+
+                ImageData data = ImageDataFactory.create(imageFile);
+                Image img = new Image(data)
+                        .setFixedPosition(500f, 10f)
+                        .scaleAbsolute(100f, 100f);
+                Paragraph p3 = new Paragraph();
+                p3.add(img);
+                document.add(p3);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             document.close();
 
         } catch (FileNotFoundException e) {
@@ -458,4 +540,25 @@ public class Relatorio {
         }
         return true;
     }
+
+    private void addParagraphCentered(PdfDocument pdf, Document doc, Paragraph p, String s) {
+        PageSize pageSize = pdf.getDefaultPageSize();
+        float width = pageSize.getWidth() - doc.getLeftMargin() - doc.getRightMargin();
+        List<TabStop> tabStops = new ArrayList<>();
+        // Create a TabStop at the middle of the page
+        SolidLine line = new SolidLine();
+        tabStops.add(new TabStop(width / 2, TabAlignment.CENTER, line));
+
+        // Create a TabStop at the end of the page
+        tabStops.add(new TabStop(width, TabAlignment.LEFT, line));
+
+        p.addTabStops(tabStops);
+        p
+                .add(new Tab())
+                .add(s)
+                .add(new Tab());
+        doc.add(p);
+
+    }
+
 }
