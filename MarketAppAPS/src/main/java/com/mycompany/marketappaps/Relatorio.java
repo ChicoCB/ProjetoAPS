@@ -7,11 +7,13 @@ package com.mycompany.marketappaps;
 //PDF library
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.layout.Document;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
+import com.itextpdf.kernel.pdf.colorspace.PdfColorSpace;
 import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.Table;
@@ -19,8 +21,6 @@ import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.properties.TabAlignment;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Tab;
-
-
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -462,6 +462,7 @@ public class Relatorio {
         return String.valueOf(((mesAtual - mesAnterior) / mesAnterior) * 100) + " %";
     }
 
+    @SuppressWarnings("empty-statement")
     public boolean generateRelatorio(String filePath) {
         try {
 
@@ -473,21 +474,27 @@ public class Relatorio {
             Document document = new Document(pdf);
 
             String Title = "Chico é Gay & CIA";
-           Paragraph p = new Paragraph();
-           p.setFontColor(new DeviceRgb(8, 73, 117))
-              .setFontSize(20f);
-           p.getAccessibilityProperties().setRole(StandardRoles.H1);
+            Paragraph p = new Paragraph();
+            p.setFontColor(new DeviceRgb(8, 73, 117))
+                    .setFontSize(20f)
+                    .setBold();
+            p.getAccessibilityProperties().setRole(StandardRoles.H1);
 
-           document.add(p);
- 
-            addParagraphCentered(pdf,document,p,Title);
+            addParagraphCentered(pdf, document, p, Title);
+
+            String subTitle = " ' " + "Drive for future, Drive for pênis" + " ' ";
+            Paragraph w = new Paragraph();
+            w.setFontColor(new DeviceRgb(8, 73, 117))
+                    .setFontSize(10f)
+                    .setItalic();
+            w.getAccessibilityProperties().setRole(StandardRoles.H2);
+            addParagraphCentered(pdf, document, w, subTitle);
 
             float columnWidth[] = {200f, 100f, 100f};
             Style s = new Style();
             s.setFontSize(10f);
             Table table = new Table(columnWidth).addStyle(s)
                     .setFixedPosition(50f, 500f, 500f);
-                    
 
             table.addHeaderCell("");
             table.addHeaderCell("Dados do mês: " + String.valueOf(currentMonth));
@@ -546,7 +553,9 @@ public class Relatorio {
         float width = pageSize.getWidth() - doc.getLeftMargin() - doc.getRightMargin();
         List<TabStop> tabStops = new ArrayList<>();
         // Create a TabStop at the middle of the page
+        Color color = new DeviceRgb(255,255,255);
         SolidLine line = new SolidLine();
+        line.setColor(color);
         tabStops.add(new TabStop(width / 2, TabAlignment.CENTER, line));
 
         // Create a TabStop at the end of the page
