@@ -473,7 +473,7 @@ public class Relatorio {
             PdfDocument pdf = new PdfDocument(new PdfWriter(filePath));
             Document document = new Document(pdf);
 
-            String Title = "Chico é Gay & CIA";
+            String Title = "Relatório";
             Paragraph p = new Paragraph();
             p.setFontColor(new DeviceRgb(8, 73, 117))
                     .setFontSize(20f)
@@ -482,7 +482,7 @@ public class Relatorio {
 
             addParagraphCentered(pdf, document, p, Title);
 
-            String subTitle = " ' " + "Drive for future, Drive for pênis" + " ' ";
+            String subTitle = " ' " + "EasySale Inc." + " ' ";
             Paragraph w = new Paragraph();
             w.setFontColor(new DeviceRgb(8, 73, 117))
                     .setFontSize(10f)
@@ -497,28 +497,28 @@ public class Relatorio {
                     .setFixedPosition(50f, 500f, 500f);
 
             table.addHeaderCell("");
-            table.addHeaderCell("Dados do mês: " + String.valueOf(currentMonth));
-            table.addHeaderCell("Ganho em Relação ao mês: " + String.valueOf(previousMonth));
+            table.addHeaderCell("Dados do mês: " + String.valueOf(currentMonth)).setBold();
+            table.addHeaderCell("Ganho em Relação ao mês: " + String.valueOf(previousMonth)).setBold();
 
-            table.addCell("Quantidade de produtos em estoque:");
+            table.addCell("Quantidade de produtos em estoque:").setBold();
             table.addCell(this.updateProdutosNovos());
             table.addCell(this.updateGanhoProdutosNovos());
-            table.addCell("Quantidade de vendas:");
+            table.addCell("Quantidade de vendas:").setBold();
             table.addCell(this.updateQntdVendas());
             table.addCell(this.updateGanhoQntdVendas());
-            table.addCell("Valor total das vendas:");
+            table.addCell("Valor total das vendas:").setBold();
             table.addCell(this.updateValorTotalVendas());
             table.addCell(this.updateGanhoValorTotalVendas());
-            table.addCell("Gasto com entregas:");
+            table.addCell("Gasto com entregas:").setBold();
             table.addCell(this.updateGastosEntregas());
             table.addCell(this.updateGanhoGastosEntregas());
-            table.addCell("Gasto com produtos:");
+            table.addCell("Gasto com produtos:").setBold();
             table.addCell(this.updateGastoProdutos());
             table.addCell(this.updateGanhoGastoProdutos());
-            table.addCell("Gastos totais:");
+            table.addCell("Gastos totais:").setBold();
             table.addCell(this.updateGastoTotal());
             table.addCell(this.updateGanhoGastoTotal());
-            table.addCell("Lucros totais:");
+            table.addCell("Lucros totais:").setBold();
             table.addCell(this.updateLucroTotal());
             table.addCell(this.updateGanhoLucroTotal());
 
